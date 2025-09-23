@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import categoryData from './data/categories.json';
 import imageDictionary from './assets/images';
+import Header from './components/Header';
+import { Link } from 'react-router';
 
 function App() {
   const [categories, setCategories] = useState<typeof categoryData>([]);
@@ -12,13 +14,10 @@ function App() {
 
   return (
     <>
-      <header>
-        <span>Welcome to</span>
-        <h1>Candy Cavern</h1>
-      </header>
+      <Header />
       <div>
         {/* TODO: Replace with basket icon */}
-        <button>Basket</button>
+        <Link to="basket">Basket</Link>
       </div>
       {categories.map(category => (
         <section key={category.name}>
@@ -28,7 +27,12 @@ function App() {
               <li key={product.name}>
                 {/* TODO: Replace "test" with product.name after configuring image dictionary */}
                 {/* TODO: Remove fixed width and height */}
-                <img src={imageDictionary["test"]} alt={product.name} width={100} height={100} />
+                <img
+                  src={imageDictionary['test']}
+                  alt={product.name}
+                  width={100}
+                  height={100}
+                />
                 <h3>{product.name}</h3>
                 <span>${product.price.toFixed(2)}</span>
                 <p>{product.description}</p>
