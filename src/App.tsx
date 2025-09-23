@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react';
+import './App.css';
+import categoryData from './data/categories.json';
+import imageDictionary from './assets/images';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [categories, setCategories] = useState<typeof categoryData>([]);
+
+  useEffect(() => {
+    setCategories(categoryData);
+  }, []);
 
   return (
     <>
+      <header>
+        <span>Welcome to</span>
+        <h1>Candy Cavern</h1>
+      </header>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        {/* TODO: Replace with basket icon */}
+        <button>Basket</button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {categories.map(category => (
+        <section key={category.name}>
+          <h2>{category.name}</h2>
+          <ul>
+            {category.products.map(product => (
+              <li key={product.name}>
+                {/* TODO: Replace "test" with product.name after configuring image dictionary */}
+                {/* TODO: Remove fixed width and height */}
+                <img src={imageDictionary["test"]} alt={product.name} width={100} height={100} />
+                <h3>{product.name}</h3>
+                <span>${product.price.toFixed(2)}</span>
+                <p>{product.description}</p>
+                {/* TODO: Implement add to basket */}
+                <button>Add to Basket</button>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
