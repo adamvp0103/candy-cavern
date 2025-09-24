@@ -73,8 +73,7 @@ function Basket() {
         <div>
           {/* TODO: Implement clear basket */}
           <button>Clear Basket</button>
-          {/* TODO: Replace with link */}
-          <button>Check Out</button>
+          <Link to="/checkout">Check Out</Link>
         </div>
       )}
     </>

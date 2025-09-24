@@ -17,7 +17,7 @@ function App() {
       <Header />
       <div>
         {/* TODO: Replace with basket icon */}
-        <Link to="basket">Basket</Link>
+        <Link to="/basket">Basket</Link>
       </div>
       {categories.map(category => (
         <section key={category.name}>
