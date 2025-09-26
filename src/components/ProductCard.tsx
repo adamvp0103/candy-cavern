@@ -12,20 +12,25 @@ interface ProductCardProps {
 
 function ProductCard({ product }: ProductCardProps) {
   return (
-    <li key={product.name}>
+    <li className="product-card" key={product.name}>
       {/* TODO: Replace "test" with product.name after configuring image dictionary */}
       {/* TODO: Remove fixed width and height */}
-      <img
-        src={imageDictionary['test']}
-        alt={product.name}
-        width={100}
-        height={100}
-      />
-      <h3>{product.name}</h3>
-      <span>${product.price.toFixed(2)}</span>
-      <p>{product.description}</p>
+      <div className="product-card-except-button">
+        <img
+          className="product-card-image"
+          src={imageDictionary['test']}
+          alt={product.name}
+          width={100}
+          height={100}
+        />
+        <div>
+          <h3>{product.name}</h3>
+          <span>${product.price.toFixed(2)}</span>
+        </div>
+        <p>{product.description}</p>
+      </div>
       {/* TODO: Implement add to basket */}
-      <button>Add to Basket</button>
+      <button className="product-card-button">Add to Basket</button>
     </li>
   );
 }

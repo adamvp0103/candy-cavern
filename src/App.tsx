@@ -4,6 +4,7 @@ import categoryData from './data/categories.json';
 import Header from './components/Header';
 import { Link } from 'react-router';
 import ProductCategorySection from './components/ProductCategorySection';
+import BasketIcon from './icons/BasketIcon';
 
 function App() {
   const [categories, setCategories] = useState<typeof categoryData>([]);
@@ -15,9 +16,13 @@ function App() {
   return (
     <>
       <Header />
-      <div>
+      <div className="basket-button-container">
         {/* TODO: Replace with basket icon */}
-        <Link to="/basket">Basket</Link>
+        <Link to="/basket">
+          <button className="basket-button">
+            <BasketIcon />
+          </button>
+        </Link>
       </div>
       {categories.map(category => (
         <ProductCategorySection category={category} />

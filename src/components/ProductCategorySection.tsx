@@ -17,9 +17,9 @@ interface ProductCategorySectionProps {
 
 function ProductCategorySection({ category }: ProductCategorySectionProps) {
   return (
-    <section key={category.name}>
+    <section key={category.name} className="product-category-section">
       <h2>{category.name}</h2>
-      <ul>
+      <ul className="product-cards">
         {category.products.map(product => (
           <ProductCard product={product} />
         ))}
