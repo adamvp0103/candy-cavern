@@ -1,7 +1,7 @@
 import { Link } from 'react-router';
 import Header from '../components/Header';
 import { useEffect, useState } from 'react';
-import imageDictionary from '../assets/images';
+import BasketItem from '../components/BasketItem';
 
 // TODO: Replace this placeholder with actual basket implementation
 const basketData = [
@@ -41,28 +41,7 @@ function Basket() {
         {basket.length > 0 ? (
           <ul>
             {basket.map(item => (
-              <li key={item.name}>
-                {/* TODO: Replace "test" with product.name after configuring image dictionary */}
-                {/* TODO: Remove fixed width and height */}
-                <img
-                  src={imageDictionary['test']}
-                  alt={item.name}
-                  width={100}
-                  height={100}
-                />
-                <h3>{item.name}</h3>
-                <span>${item.price.toFixed(2)}</span>
-                <div>
-                  {/* TODO: Implement quantity decrement */}
-                  <button>-</button>
-                  <span>{item.quantity}</span>
-                  {/* TODO: Implement quantity increment */}
-                  <button>+</button>
-                </div>
-                {/* TODO: Implement removal */}
-                {/* TODO: Replace with remove icon */}
-                <button>Remove</button>
-              </li>
+              <BasketItem item={item} />
             ))}
           </ul>
         ) : (
