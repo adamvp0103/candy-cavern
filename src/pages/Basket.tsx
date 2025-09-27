@@ -1,7 +1,8 @@
 import { Link } from 'react-router';
 import Header from '../components/Header';
 import { useEffect, useState } from 'react';
-import BasketItem from '../components/BasketItem';
+import BackIcon from '../icons/BackIcon';
+import BasketCard from '../components/BasketCard';
 
 // TODO: Replace this placeholder with actual basket implementation
 const basketData = [
@@ -32,16 +33,20 @@ function Basket() {
   return (
     <>
       <Header />
-      <div>
+      <div className="left-nav-button-container">
         {/* TODO: Replace with back icon */}
-        <Link to="/">Back</Link>
+        <Link to="/">
+          <button className="nav-button">
+            <BackIcon />
+          </button>
+        </Link>
       </div>
-      <section>
+      <section className="section">
         <h2>Your Basket</h2>
         {basket.length > 0 ? (
-          <ul>
+          <ul className="card-list">
             {basket.map(item => (
-              <BasketItem item={item} />
+              <BasketCard item={item} />
             ))}
           </ul>
         ) : (
@@ -49,10 +54,12 @@ function Basket() {
         )}
       </section>
       {basket.length > 0 && (
-        <div>
+        <div className="adjacent-buttons">
           {/* TODO: Implement clear basket */}
-          <button>Clear Basket</button>
-          <Link to="/checkout">Check Out</Link>
+          <button className="minor-button">Clear Basket</button>
+          <button className="major-button">
+            <Link to="/checkout">Check Out</Link>
+          </button>
         </div>
       )}
     </>

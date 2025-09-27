@@ -3,8 +3,8 @@ import './App.css';
 import categoryData from './data/categories.json';
 import Header from './components/Header';
 import { Link } from 'react-router';
-import ProductCategorySection from './components/ProductCategorySection';
 import BasketIcon from './icons/BasketIcon';
+import ProductCard from './components/ProductCard';
 
 function App() {
   const [categories, setCategories] = useState<typeof categoryData>([]);
@@ -16,16 +16,23 @@ function App() {
   return (
     <>
       <Header />
-      <div className="basket-button-container">
+      <div className="right-nav-button-container">
         {/* TODO: Replace with basket icon */}
         <Link to="/basket">
-          <button className="basket-button">
+          <button className="nav-button">
             <BasketIcon />
           </button>
         </Link>
       </div>
       {categories.map(category => (
-        <ProductCategorySection category={category} />
+        <section key={category.name} className="section">
+          <h2>{category.name}</h2>
+          <ul className="card-list">
+            {category.products.map(product => (
+              <ProductCard product={product} />
+            ))}
+          </ul>
+        </section>
       ))}
     </>
   );
