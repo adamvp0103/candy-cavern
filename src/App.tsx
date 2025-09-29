@@ -27,7 +27,7 @@ function App() {
       {categories.map(category => (
         <section key={category.name} className="section">
           <h2>{category.name}</h2>
-          <ul className="card-list">
+          <ul className="product-card-list">
             {category.products.map(product => (
               <ProductCard product={product} />
             ))}

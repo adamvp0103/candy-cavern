@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 import Header from '../components/Header';
 import { useEffect, useState } from 'react';
+import BackIcon from '../icons/BackIcon';
 
 // TODO: Replace this placeholder with actual basket implementation
 const basketData = [
@@ -40,127 +41,142 @@ function Checkout() {
   return (
     <>
       <Header />
-      <div>
-        {/* TODO: Replace with back icon */}
-        <Link to="/basket">Back</Link>
+      <div className="left-nav-button-container">
+        <Link to="/basket">
+          <button className="nav-button">
+            <BackIcon />
+          </button>
+        </Link>
       </div>
-      <section>
+      <section className="section">
         <h2>Order Summary</h2>
-        <ul>
+        <ul className="order-list">
           {basket.map(item => (
-            <li key={item.name}>
-              <h3>{item.name}</h3>
-              <span>x{item.quantity}</span>
+            <li className="order-list-item" key={item.name}>
+              <div>
+                <h3>{item.name}</h3>
+                <span>x{item.quantity}</span>
+              </div>
               <span>${(item.price * item.quantity).toFixed(2)}</span>
             </li>
           ))}
         </ul>
-        <ul>
-          <li>
+        <ul className="total-list">
+          <li className="order-list-item">
             <h3>Subtotal</h3>
             <span>${subtotal.toFixed(2)}</span>
           </li>
-          <li>
+          <li className="order-list-item">
             <h3>Shipping</h3>
             <span>${shippingFee.toFixed(2)}</span>
           </li>
-          <li>
+          <li className="order-list-item">
             <h3>Tax</h3>
             <span>${tax.toFixed(2)}</span>
           </li>
-          <li>
+          <li className="order-list-item">
             <h3>Total</h3>
-            <span>${(subtotal + shippingFee + tax).toFixed(2)}</span>
+            <span className="total">
+              ${(subtotal + shippingFee + tax).toFixed(2)}
+            </span>
           </li>
         </ul>
       </section>
-      <section>
+      <section className="section">
         <h2>Billing Information</h2>
         {/* TODO: Implement controlled form */}
-        <form>
-          <div>
+        <form className="form">
+          <div className="input-field">
             <label htmlFor="card-number-input">Card Number</label>
             <input
               id="card-number-input"
+              className="input"
               inputMode="numeric"
               pattern="[0-9\s]{13,19}"
               maxLength={19}
               required
             />
           </div>
-          <div>
+          <div className="input-field">
             <label htmlFor="security-code-input">Security Code</label>
             <input
               id="security-code-input"
+              className="input"
               inputMode="numeric"
               pattern="[0-9]{3}"
               maxLength={3}
               required
             />
           </div>
-          <div>
+          <div className="input-field">
             <label htmlFor="expiration-date-input">Expiration Date</label>
-            <input id="expiration-date-input" type="month" required />
+            <input
+              id="expiration-date-input"
+              className="input"
+              type="month"
+              required
+            />
           </div>
-          <div>
+          <div className="input-field">
             <label htmlFor="full-name-input">
               Full Name as It Appears on Card
             </label>
-            <input id="full-name-input" required />
+            <input id="full-name-input" className="input" required />
           </div>
         </form>
       </section>
-      <section>
+      <section className="section">
         <h2>Shipping Information</h2>
         {/* TODO: Implement controlled form */}
-        <form>
-          <div>
+        <form className="form">
+          <div className="input-field">
             <label htmlFor="email-input">Email</label>
-            <input id="email-input" type="email" required />
+            <input id="email-input" className="input" type="email" required />
           </div>
-          <div>
+          <div className="input-field">
             <label htmlFor="address-1-input">Address Line 1</label>
-            <input id="address-1-input" required />
+            <input id="address-1-input" className="input" required />
           </div>
-          <div>
+          <div className="input-field">
             <label htmlFor="address-2-input">
               Address Line 2 <span>(Optional)</span>
             </label>
-            <input id="address-2-input" />
+            <input id="address-2-input" className="input" />
           </div>
-          <div>
+          <div className="input-field">
             <label htmlFor="city-input">City</label>
-            <input id="city-input" required />
+            <input id="city-input" className="input" required />
           </div>
-          <div>
+          <div className="input-field">
             <label htmlFor="state-input">State</label>
-            <input id="state-input" required />
+            <input id="state-input" className="input" required />
           </div>
-          <div>
+          <div className="input-field">
             <label htmlFor="zip-code-input">ZIP Code</label>
             <input
               id="zip-code-input"
+              className="input"
               inputMode="numeric"
               pattern="[0-9]{5}"
               maxLength={5}
               required
             />
           </div>
-          <div>
+          <div className="input-field">
             <label htmlFor="country-input">Country</label>
-            <input id="country-input" required />
+            <input id="country-input" className="input" required />
           </div>
-          <div>
+          <div className="input-field">
             <label htmlFor="instructions-input">
               Special Instructions <span>(Optional)</span>
             </label>
-            <textarea id="instructions-input" rows={3} />
+            <textarea id="instructions-input" className="input" rows={3} />
           </div>
         </form>
       </section>
-      <div>
+      <div className="place-order-button-container">
         {/* TODO: Implement place order */}
-        <button>Place Order</button>
+        <button className="place-order-button">Place Order</button>
       </div>
     </>
   );

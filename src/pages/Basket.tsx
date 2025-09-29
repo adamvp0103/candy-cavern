@@ -34,7 +34,6 @@ function Basket() {
     <>
       <Header />
       <div className="left-nav-button-container">
-        {/* TODO: Replace with back icon */}
         <Link to="/">
           <button className="nav-button">
             <BackIcon />
@@ -44,7 +43,7 @@ function Basket() {
       <section className="section">
         <h2>Your Basket</h2>
         {basket.length > 0 ? (
-          <ul className="card-list">
+          <ul className="basket-card-list">
             {basket.map(item => (
               <BasketCard item={item} />
             ))}
@@ -54,11 +53,13 @@ function Basket() {
         )}
       </section>
       {basket.length > 0 && (
-        <div className="adjacent-buttons">
+        <div className="basket-buttons">
           {/* TODO: Implement clear basket */}
-          <button className="minor-button">Clear Basket</button>
-          <button className="major-button">
-            <Link to="/checkout">Check Out</Link>
+          <button className="clear-basket-button">Clear Basket</button>
+          <button className="check-out-button">
+            <Link to="/checkout">
+              <div className="check-out-button-text">Check Out</div>
+            </Link>
           </button>
         </div>
       )}
