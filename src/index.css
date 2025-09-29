@@ -247,3 +247,9 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+
+@media (min-width: 1008px) {
+  :root {
+    --horizontal-padding: 16rem;
+  }
+}
