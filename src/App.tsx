@@ -18,15 +18,16 @@ function App() {
       <Header />
       <div className="right-nav-button-container">
         {/* TODO: Replace with basket icon */}
-        <Link to="/basket">
+        <Link to="/basket" style={{ textDecoration: 'none' }}>
           <button className="nav-button">
             <BasketIcon />
+            <span className="nav-button-text">Basket</span>
           </button>
         </Link>
       </div>
       {categories.map(category => (
         <section key={category.name} className="section">
-          <h2>{category.name}</h2>
+          <h2 className="heading">{category.name}</h2>
           <ul className="product-card-list">
             {category.products.map(product => (
               <ProductCard product={product} />

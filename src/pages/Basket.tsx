@@ -34,14 +34,15 @@ function Basket() {
     <>
       <Header />
       <div className="left-nav-button-container">
-        <Link to="/">
+        <Link to="/" style={{ textDecoration: 'none' }}>
           <button className="nav-button">
             <BackIcon />
+            <span className="nav-button-text">Products</span>
           </button>
         </Link>
       </div>
       <section className="section">
-        <h2>Your Basket</h2>
+        <h2 className="heading">Your Basket</h2>
         {basket.length > 0 ? (
           <ul className="basket-card-list">
             {basket.map(item => (
@@ -57,7 +58,7 @@ function Basket() {
           {/* TODO: Implement clear basket */}
           <button className="clear-basket-button">Clear Basket</button>
           <button className="check-out-button">
-            <Link to="/checkout">
+            <Link to="/checkout" style={{ textDecoration: 'none' }}>
               <div className="check-out-button-text">Check Out</div>
             </Link>
           </button>

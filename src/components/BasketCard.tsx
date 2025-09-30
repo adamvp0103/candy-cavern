@@ -28,23 +28,23 @@ function BasketCard({ item }: BasketCardProps) {
       <div className="basket-card-except-image">
         <div className="basket-card-title-and-price">
           <h3>{item.name}</h3>
-          <span>${item.price.toFixed(2)}</span>
+          <span className='price'>${item.price.toFixed(2)}</span>
         </div>
         <div className="basket-card-quantity-and-remove">
           <div className="basket-card-quantity">
             {/* TODO: Implement quantity decrement */}
-            <button className="basket-card-button">
+            <button className="quantity-button">
               <MinusIcon />
             </button>
             <span>{item.quantity}</span>
             {/* TODO: Implement quantity increment */}
-            <button className="basket-card-button">
+            <button className="quantity-button">
               <PlusIcon />
             </button>
           </div>
           {/* TODO: Implement removal */}
           {/* TODO: Replace with remove icon */}
-          <button className="basket-card-button">
+          <button className="remove-button">
             <RemoveIcon />
           </button>
         </div>

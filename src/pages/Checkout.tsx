@@ -42,20 +42,21 @@ function Checkout() {
     <>
       <Header />
       <div className="left-nav-button-container">
-        <Link to="/basket">
+        <Link to="/basket" style={{ textDecoration: 'none' }}>
           <button className="nav-button">
             <BackIcon />
+            <span className="nav-button-text">Basket</span>
           </button>
         </Link>
       </div>
       <section className="section">
-        <h2>Order Summary</h2>
+        <h2 className="heading">Order Summary</h2>
         <ul className="order-list">
           {basket.map(item => (
             <li className="order-list-item" key={item.name}>
               <div>
                 <h3>{item.name}</h3>
-                <span>x{item.quantity}</span>
+                <span className="quantity">&#x00d7; {item.quantity}</span>
               </div>
               <span>${(item.price * item.quantity).toFixed(2)}</span>
             </li>
@@ -83,11 +84,13 @@ function Checkout() {
         </ul>
       </section>
       <section className="section">
-        <h2>Billing Information</h2>
+        <h2 className="heading">Billing Information</h2>
         {/* TODO: Implement controlled form */}
         <form className="form">
           <div className="input-field">
-            <label htmlFor="card-number-input">Card Number</label>
+            <label className="input-label" htmlFor="card-number-input">
+              Card Number
+            </label>
             <input
               id="card-number-input"
               className="input"
@@ -98,7 +101,9 @@ function Checkout() {
             />
           </div>
           <div className="input-field">
-            <label htmlFor="security-code-input">Security Code</label>
+            <label className="input-label" htmlFor="security-code-input">
+              Security Code
+            </label>
             <input
               id="security-code-input"
               className="input"
@@ -109,7 +114,9 @@ function Checkout() {
             />
           </div>
           <div className="input-field">
-            <label htmlFor="expiration-date-input">Expiration Date</label>
+            <label className="input-label" htmlFor="expiration-date-input">
+              Expiration Date
+            </label>
             <input
               id="expiration-date-input"
               className="input"
@@ -118,7 +125,7 @@ function Checkout() {
             />
           </div>
           <div className="input-field">
-            <label htmlFor="full-name-input">
+            <label className="input-label" htmlFor="full-name-input">
               Full Name as It Appears on Card
             </label>
             <input id="full-name-input" className="input" required />
@@ -126,33 +133,43 @@ function Checkout() {
         </form>
       </section>
       <section className="section">
-        <h2>Shipping Information</h2>
+        <h2 className="heading">Shipping Information</h2>
         {/* TODO: Implement controlled form */}
         <form className="form">
           <div className="input-field">
-            <label htmlFor="email-input">Email</label>
+            <label className="input-label" htmlFor="email-input">
+              Email
+            </label>
             <input id="email-input" className="input" type="email" required />
           </div>
           <div className="input-field">
-            <label htmlFor="address-1-input">Address Line 1</label>
+            <label className="input-label" htmlFor="address-1-input">
+              Address Line 1
+            </label>
             <input id="address-1-input" className="input" required />
           </div>
           <div className="input-field">
-            <label htmlFor="address-2-input">
-              Address Line 2 <span>(Optional)</span>
+            <label className="input-label" htmlFor="address-2-input">
+              Address Line 2 <span className="optional">(Optional)</span>
             </label>
             <input id="address-2-input" className="input" />
           </div>
           <div className="input-field">
-            <label htmlFor="city-input">City</label>
+            <label className="input-label" htmlFor="city-input">
+              City
+            </label>
             <input id="city-input" className="input" required />
           </div>
           <div className="input-field">
-            <label htmlFor="state-input">State</label>
+            <label className="input-label" htmlFor="state-input">
+              State
+            </label>
             <input id="state-input" className="input" required />
           </div>
           <div className="input-field">
-            <label htmlFor="zip-code-input">ZIP Code</label>
+            <label className="input-label" htmlFor="zip-code-input">
+              ZIP Code
+            </label>
             <input
               id="zip-code-input"
               className="input"
@@ -163,12 +180,14 @@ function Checkout() {
             />
           </div>
           <div className="input-field">
-            <label htmlFor="country-input">Country</label>
+            <label className="input-label" htmlFor="country-input">
+              Country
+            </label>
             <input id="country-input" className="input" required />
           </div>
           <div className="input-field">
-            <label htmlFor="instructions-input">
-              Special Instructions <span>(Optional)</span>
+            <label className="input-label" htmlFor="instructions-input">
+              Special Instructions <span className="optional">(Optional)</span>
             </label>
             <textarea id="instructions-input" className="input" rows={3} />
           </div>

@@ -26,7 +26,7 @@ function ProductCard({ product }: ProductCardProps) {
         <div className="product-card-info">
           <div className="product-card-title-and-price">
             <h3>{product.name}</h3>
-            <span>${product.price.toFixed(2)}</span>
+            <span className="price">${product.price.toFixed(2)}</span>
           </div>
           <p>{product.description}</p>
         </div>

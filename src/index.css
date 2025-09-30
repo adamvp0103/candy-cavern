@@ -5,17 +5,36 @@
   margin: 0;
   padding: 0;
 
-  outline: 1px solid red;
+  font-family: Fredoka, sans-serif;
+  text-shadow: var(--shadow);
+  color: #fff;
+
+  /* outline: 1px solid red; */
 }
 
 :root {
+  /* TODO: Replace solid background with image */
+  background-color: #7d10a8;
+
   --vertical-padding: 1rem;
   --horizontal-padding: 1rem;
+  --title-font-family: 'Fontdiner Swanky', fantasy;
+  --primary: #e670a9;
+  --danger: #ce134e;
+  --confirm: #12c362;
+  --shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .header {
   padding: var(--vertical-padding) var(--horizontal-padding);
+  background-color: var(--primary);
+  box-shadow: var(--shadow);
   text-align: center;
+}
+
+.page-title {
+  font-family: var(--title-font-family);
+  font-weight: normal;
 }
 
 .right-nav-button-container {
@@ -34,8 +53,32 @@
 }
 
 .nav-button {
-  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  border-radius: 999rem; /* Arbitrarily high value for pill shape */
   padding: 1rem;
+  background-color: var(--primary);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-button:hover {
+  filter: brightness(90%);
+}
+
+.icon {
+  filter: drop-shadow(var(--shadow));
+}
+
+.nav-button-text {
+  display: none;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
 }
 
 .section {
@@ -43,6 +86,11 @@
   flex-direction: column;
   gap: var(--vertical-padding);
   padding: var(--vertical-padding) var(--horizontal-padding);
+}
+
+.heading {
+  font-family: var(--title-font-family);
+  font-weight: normal;
 }
 
 .product-card-list {
@@ -57,21 +105,24 @@
   flex-direction: column;
   flex-shrink: 0;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: 1rem;
   border-radius: 1rem;
   padding: 1rem;
+  background-color: var(--primary);
 }
 
 .product-card-except-button {
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .product-card-image {
   width: 6rem;
   height: 6rem;
   object-fit: cover;
+  border: 1px solid #fff;
   border-radius: 0.5rem;
+  box-shadow: var(--shadow);
 }
 
 .product-card-info {
@@ -87,10 +138,25 @@
   gap: 0.5rem;
 }
 
+.price {
+  font-weight: lighter;
+}
+
 .product-card-button {
+  border: none;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
+  background-color: #fff;
+  box-shadow: var(--shadow);
   font-size: 1rem;
+  font-weight: 500;
+  text-shadow: none;
+  color: #000;
+  cursor: pointer;
+}
+
+.product-card-button:hover {
+  filter: brightness(90%);
 }
 
 .basket-card-list {
@@ -102,16 +168,20 @@
 
 .basket-card {
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
   border-radius: 1rem;
   padding: 1rem;
+  background-color: var(--primary);
+  box-shadow: var(--shadow);
 }
 
 .basket-card-image {
   width: 6rem;
   height: 6rem;
   object-fit: cover;
+  border: 1px solid #fff;
   border-radius: 0.5rem;
+  box-shadow: var(--shadow);
 }
 
 .basket-card-except-image {
@@ -140,12 +210,41 @@
   gap: 0.5rem;
 }
 
-.basket-card-button {
+.quantity-button {
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
   border-radius: 50%;
   padding: 0.5rem;
+  background-color: #fff;
+  box-shadow: var(--shadow);
+  color: #000;
+  cursor: pointer;
+}
+
+.quantity-button:hover {
+  filter: brightness(90%);
+}
+
+.quantity-button .icon {
+  filter: none;
+}
+
+.remove-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 50%;
+  padding: 0.5rem;
+  background-color: var(--danger);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+
+.remove-button:hover {
+  filter: brightness(90%);
 }
 
 .basket-buttons {
@@ -159,19 +258,39 @@
 }
 
 .clear-basket-button {
+  border: none;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
+  background-color: var(--danger);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.clear-basket-button:hover {
+  filter: brightness(90%);
 }
 
 .check-out-button {
   flex: 1;
+  border: none;
+  background-color: transparent;
 }
 
 .check-out-button-text {
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
+  background-color: #fff;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   font-size: 1rem;
+  font-weight: 500;
+  text-shadow: none;
+  color: #000;
+}
+
+.check-out-button-text:hover {
+  filter: brightness(90%);
 }
 
 .order-list {
@@ -187,6 +306,11 @@
   gap: 1rem;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.quantity {
+  font-weight: lighter;
 }
 
 .total-list {
@@ -195,11 +319,14 @@
   gap: var(--vertical-padding);
   border-radius: 1rem;
   padding: var(--vertical-padding);
+  background-color: var(--primary);
+  box-shadow: var(--shadow);
   list-style: none;
 }
 
 .total {
   font-size: 2rem;
+  font-weight: bold;
 }
 
 .form {
@@ -214,10 +341,22 @@
   gap: 0.5rem;
 }
 
+.input-label {
+  font-weight: bold;
+}
+
 .input {
+  border: none;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
+  box-shadow: var(--shadow);
   font-size: 1rem;
+  text-shadow: none;
+  color: #000;
+}
+
+.optional {
+  font-weight: lighter;
 }
 
 .place-order-button-container {
@@ -226,15 +365,32 @@
 
 .place-order-button {
   width: 100%;
+  border: none;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
+  background-color: var(--confirm);
+  box-shadow: var(--shadow);
   font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.place-order-button:hover {
+  filter: brightness(90%);
 }
 
 @media (min-width: 641px) {
   :root {
     --vertical-padding: 2rem;
     --horizontal-padding: 4rem;
+  }
+
+  .nav-button {
+    padding: 1rem 2rem;
+  }
+
+  .nav-button-text {
+    display: inline;
   }
 
   .product-card-list {
@@ -251,5 +407,19 @@
 @media (min-width: 1008px) {
   :root {
     --horizontal-padding: 16rem;
+  }
+
+  .product-card-image {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .basket-card-image {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .basket-card-except-image {
+    padding: 1rem;
   }
 }
