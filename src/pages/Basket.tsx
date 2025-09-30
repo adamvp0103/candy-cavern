@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import { useEffect, useState } from 'react';
 import BackIcon from '../icons/BackIcon';
 import BasketCard from '../components/BasketCard';
+import background from '../assets/images/background.png';
 
 // TODO: Replace this placeholder with actual basket implementation
 const basketData = [
@@ -32,6 +33,7 @@ function Basket() {
 
   return (
     <>
+      <img className="background" src={background} />
       <Header />
       <div className="left-nav-button-container">
         <Link to="/" style={{ textDecoration: 'none' }}>

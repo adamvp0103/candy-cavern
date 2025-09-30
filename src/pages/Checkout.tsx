@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import Header from '../components/Header';
 import { useEffect, useState } from 'react';
 import BackIcon from '../icons/BackIcon';
+import background from '../assets/images/background.png';
 
 // TODO: Replace this placeholder with actual basket implementation
 const basketData = [
@@ -40,6 +41,7 @@ function Checkout() {
 
   return (
     <>
+      <img className="background" src={background} />
       <Header />
       <div className="left-nav-button-container">
         <Link to="/basket" style={{ textDecoration: 'none' }}>

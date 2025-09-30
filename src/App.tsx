@@ -5,6 +5,7 @@ import Header from './components/Header';
 import { Link } from 'react-router';
 import BasketIcon from './icons/BasketIcon';
 import ProductCard from './components/ProductCard';
+import background from './assets/images/background.png';
 
 function App() {
   const [categories, setCategories] = useState<typeof categoryData>([]);
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <>
+      <img className="background" src={background} />
       <Header />
       <div className="right-nav-button-container">
         {/* TODO: Replace with basket icon */}

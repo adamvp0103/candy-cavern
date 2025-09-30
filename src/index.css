@@ -13,8 +13,7 @@
 }
 
 :root {
-  /* TODO: Replace solid background with image */
-  background-color: #7d10a8;
+  background-color: #5F0C80;
 
   --vertical-padding: 1rem;
   --horizontal-padding: 1rem;
@@ -23,6 +22,15 @@
   --danger: #ce134e;
   --confirm: #12c362;
   --shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  z-index: -999;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
 }
 
 .header {
@@ -35,6 +43,12 @@
 .page-title {
   font-family: var(--title-font-family);
   font-weight: normal;
+}
+
+.stalactites {
+  display: flex;
+  justify-content: space-between;
+  filter: drop-shadow(var(--shadow));
 }
 
 .right-nav-button-container {
