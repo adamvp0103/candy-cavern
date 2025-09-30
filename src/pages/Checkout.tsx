@@ -1,37 +1,15 @@
 import { Link } from 'react-router';
 import Header from '../components/Header';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import BackIcon from '../icons/BackIcon';
 import background from '../assets/images/background.png';
-
-// TODO: Replace this placeholder with actual basket implementation
-const basketData = [
-  {
-    name: 'Milk Chocolate Bar',
-    price: 2.5,
-    quantity: 1
-  },
-  {
-    name: 'Dark Chocolate Truffles',
-    price: 6,
-    quantity: 2
-  },
-  {
-    name: 'Chocolate-Covered Almonds',
-    price: 4.75,
-    quantity: 3
-  }
-];
+import { BasketContext } from '../data/BasketProvider';
 
 const shippingFee = 6;
 const taxRate = 0.08;
 
 function Checkout() {
-  const [basket, setBasket] = useState<typeof basketData>([]);
-
-  useEffect(() => {
-    setBasket(basketData);
-  }, []);
+  const basket = useContext(BasketContext);
 
   const subtotal = basket.reduce(
     (previous, current) => previous + current.price * current.quantity,

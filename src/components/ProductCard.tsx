@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import imageDictionary from '../assets/images';
+import { BasketDispatchContext } from '../data/BasketProvider';
 
 interface Product {
   name: string;
@@ -11,6 +13,15 @@ interface ProductCardProps {
 }
 
 function ProductCard({ product }: ProductCardProps) {
+  const dispatch = useContext(BasketDispatchContext);
+
+  function handleAddToBasket(name: string, price: number) {
+    dispatch({
+      type: 'added',
+      payload: { name, price }
+    });
+  }
+
   return (
     <li className="product-card" key={product.name}>
       {/* TODO: Replace "test" with product.name after configuring image dictionary */}
@@ -32,7 +43,12 @@ function ProductCard({ product }: ProductCardProps) {
         </div>
       </div>
       {/* TODO: Implement add to basket */}
-      <button className="product-card-button">Add to Basket</button>
+      <button
+        className="product-card-button"
+        onClick={() => handleAddToBasket(product.name, product.price)}
+      >
+        Add to Basket
+      </button>
     </li>
   );
 }

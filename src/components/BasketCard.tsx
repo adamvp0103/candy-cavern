@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import imageDictionary from '../assets/images';
+import { BasketDispatchContext } from '../data/BasketProvider';
 import MinusIcon from '../icons/MinusIcon';
 import PlusIcon from '../icons/PlusIcon';
 import RemoveIcon from '../icons/RemoveIcon';
@@ -14,6 +16,29 @@ interface BasketCardProps {
 }
 
 function BasketCard({ item }: BasketCardProps) {
+  const dispatch = useContext(BasketDispatchContext);
+
+  function handleDecrement(name: string) {
+    dispatch({
+      type: 'decremented_quantity',
+      payload: { name }
+    });
+  }
+
+  function handleIncrement(name: string) {
+    dispatch({
+      type: 'incremented_quantity',
+      payload: { name }
+    });
+  }
+
+  function handleRemove(name: string) {
+    dispatch({
+      type: 'removed',
+      payload: { name }
+    });
+  }
+
   return (
     <li className="basket-card" key={item.name}>
       {/* TODO: Replace "test" with product.name after configuring image dictionary */}
@@ -28,23 +53,34 @@ function BasketCard({ item }: BasketCardProps) {
       <div className="basket-card-except-image">
         <div className="basket-card-title-and-price">
           <h3>{item.name}</h3>
-          <span className='price'>${item.price.toFixed(2)}</span>
+          <span className="price">${item.price.toFixed(2)}</span>
         </div>
         <div className="basket-card-quantity-and-remove">
           <div className="basket-card-quantity">
             {/* TODO: Implement quantity decrement */}
-            <button className="quantity-button">
+            <button
+              className="quantity-button"
+              onClick={() => handleDecrement(item.name)}
+              disabled={item.quantity < 2}
+            >
               <MinusIcon />
             </button>
-            <span>{item.quantity}</span>
+            <span className="basket-quantity">{item.quantity}</span>
             {/* TODO: Implement quantity increment */}
-            <button className="quantity-button">
+            <button
+              className="quantity-button"
+              onClick={() => handleIncrement(item.name)}
+              disabled={item.quantity > 9}
+            >
               <PlusIcon />
             </button>
           </div>
           {/* TODO: Implement removal */}
           {/* TODO: Replace with remove icon */}
-          <button className="remove-button">
+          <button
+            className="remove-button"
+            onClick={() => handleRemove(item.name)}
+          >
             <RemoveIcon />
           </button>
         </div>

@@ -1,35 +1,20 @@
 import { Link } from 'react-router';
 import Header from '../components/Header';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import BackIcon from '../icons/BackIcon';
 import BasketCard from '../components/BasketCard';
 import background from '../assets/images/background.png';
-
-// TODO: Replace this placeholder with actual basket implementation
-const basketData = [
-  {
-    name: 'Milk Chocolate Bar',
-    price: 2.5,
-    quantity: 1
-  },
-  {
-    name: 'Dark Chocolate Truffles',
-    price: 6,
-    quantity: 2
-  },
-  {
-    name: 'Chocolate-Covered Almonds',
-    price: 4.75,
-    quantity: 3
-  }
-];
+import { BasketContext, BasketDispatchContext } from '../data/BasketProvider';
 
 function Basket() {
-  const [basket, setBasket] = useState<typeof basketData>([]);
+  const basket = useContext(BasketContext);
+  const dispatch = useContext(BasketDispatchContext);
 
-  useEffect(() => {
-    setBasket(basketData);
-  }, []);
+  function handleClearBasket() {
+    dispatch({
+      type: 'cleared'
+    });
+  }
 
   return (
     <>
@@ -52,13 +37,15 @@ function Basket() {
             ))}
           </ul>
         ) : (
-          <span>Your basket is empty.</span>
+          <span className="empty-basket-message">Your basket is empty.</span>
         )}
       </section>
       {basket.length > 0 && (
         <div className="basket-buttons">
           {/* TODO: Implement clear basket */}
-          <button className="clear-basket-button">Clear Basket</button>
+          <button className="clear-basket-button" onClick={handleClearBasket}>
+            Clear Basket
+          </button>
           <button className="check-out-button">
             <Link to="/checkout" style={{ textDecoration: 'none' }}>
               <div className="check-out-button-text">Check Out</div>

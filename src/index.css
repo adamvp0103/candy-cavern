@@ -13,7 +13,7 @@
 }
 
 :root {
-  background-color: #5F0C80;
+  background-color: #5f0c80;
 
   --vertical-padding: 1rem;
   --horizontal-padding: 1rem;
@@ -180,6 +180,10 @@
   list-style: none;
 }
 
+.empty-basket-message {
+  text-align: center;
+}
+
 .basket-card {
   display: flex;
   gap: 1rem;
@@ -237,12 +241,22 @@
   cursor: pointer;
 }
 
-.quantity-button:hover {
+.quantity-button:hover:not(:disabled) {
   filter: brightness(90%);
+}
+
+.quantity-button:disabled {
+  opacity: 0.1;
+  cursor: auto;
 }
 
 .quantity-button .icon {
   filter: none;
+}
+
+.basket-quantity {
+  width: var(--vertical-padding);
+  text-align: center;
 }
 
 .remove-button {
