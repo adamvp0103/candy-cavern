@@ -1,10 +1,13 @@
 import { Link } from 'react-router';
 import Header from '../components/Header';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import BackIcon from '../icons/BackIcon';
 import BasketCard from '../components/BasketCard';
 import background from '../assets/images/background.png';
-import { BasketContext, BasketDispatchContext } from '../data/BasketProvider';
+import {
+  BasketContext,
+  BasketDispatchContext
+} from '../context/BasketProvider';
 
 function Basket() {
   const basket = useContext(BasketContext);

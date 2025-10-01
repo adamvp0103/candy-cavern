@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './App.css';
 import categoryData from './data/categories.json';
 import Header from './components/Header';
@@ -6,8 +6,12 @@ import { Link } from 'react-router';
 import BasketIcon from './icons/BasketIcon';
 import ProductCard from './components/ProductCard';
 import background from './assets/images/background.png';
+import OrderConfirmationOverlay from './components/OrderConfirmationOverlay';
+import { OverlayContext } from './context/OverlayProvider';
 
 function App() {
+  const overlayContext = useContext(OverlayContext);
+
   const [categories, setCategories] = useState<typeof categoryData>([]);
 
   useEffect(() => {
@@ -37,6 +41,7 @@ function App() {
           </ul>
         </section>
       ))}
+      {overlayContext.showOverlay && <OrderConfirmationOverlay />}
     </>
   );
 }

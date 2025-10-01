@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import imageDictionary from '../assets/images';
-import { BasketDispatchContext } from '../data/BasketProvider';
+import { BasketDispatchContext } from '../context/BasketProvider';
 import MinusIcon from '../icons/MinusIcon';
 import PlusIcon from '../icons/PlusIcon';
 import RemoveIcon from '../icons/RemoveIcon';

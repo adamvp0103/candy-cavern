@@ -1,21 +1,34 @@
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import Header from '../components/Header';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import BackIcon from '../icons/BackIcon';
 import background from '../assets/images/background.png';
-import { BasketContext } from '../data/BasketProvider';
-
-const shippingFee = 6;
-const taxRate = 0.08;
+import OrderSummary from '../components/OrderSummary';
+import BillingInformation from '../components/BillingInformation';
+import ShippingInformation from '../components/ShippingInformation';
+import { BasketDispatchContext } from '../context/BasketProvider';
+import { OverlayContext } from '../context/OverlayProvider';
 
 function Checkout() {
-  const basket = useContext(BasketContext);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [billingInformationValid, setBillingInformationValid] = useState(false);
+  const [shippingInformationValid, setShippingInformationValid] =
+    useState(false);
 
-  const subtotal = basket.reduce(
-    (previous, current) => previous + current.price * current.quantity,
-    0
-  );
-  const tax = (subtotal + shippingFee) * taxRate;
+  const navigate = useNavigate();
+
+  const dispatch = useContext(BasketDispatchContext);
+  const overlayContext = useContext(OverlayContext);
+
+  function handlePlaceOrder() {
+    setFormSubmitted(true);
+    if (billingInformationValid && shippingInformationValid) {
+      dispatch({ type: 'cleared' });
+      overlayContext.setShowOverlay(true);
+      navigate('/');
+      setFormSubmitted(false);
+    }
+  }
 
   return (
     <>
@@ -29,153 +42,20 @@ function Checkout() {
           </button>
         </Link>
       </div>
-      <section className="section">
-        <h2 className="heading">Order Summary</h2>
-        <ul className="order-list">
-          {basket.map(item => (
-            <li className="order-list-item" key={item.name}>
-              <div>
-                <h3>{item.name}</h3>
-                <span className="quantity">&#x00d7; {item.quantity}</span>
-              </div>
-              <span>${(item.price * item.quantity).toFixed(2)}</span>
-            </li>
-          ))}
-        </ul>
-        <ul className="total-list">
-          <li className="order-list-item">
-            <h3>Subtotal</h3>
-            <span>${subtotal.toFixed(2)}</span>
-          </li>
-          <li className="order-list-item">
-            <h3>Shipping</h3>
-            <span>${shippingFee.toFixed(2)}</span>
-          </li>
-          <li className="order-list-item">
-            <h3>Tax</h3>
-            <span>${tax.toFixed(2)}</span>
-          </li>
-          <li className="order-list-item">
-            <h3>Total</h3>
-            <span className="total">
-              ${(subtotal + shippingFee + tax).toFixed(2)}
-            </span>
-          </li>
-        </ul>
-      </section>
-      <section className="section">
-        <h2 className="heading">Billing Information</h2>
-        {/* TODO: Implement controlled form */}
-        <form className="form">
-          <div className="input-field">
-            <label className="input-label" htmlFor="card-number-input">
-              Card Number
-            </label>
-            <input
-              id="card-number-input"
-              className="input"
-              inputMode="numeric"
-              pattern="[0-9\s]{13,19}"
-              maxLength={19}
-              required
-            />
-          </div>
-          <div className="input-field">
-            <label className="input-label" htmlFor="security-code-input">
-              Security Code
-            </label>
-            <input
-              id="security-code-input"
-              className="input"
-              inputMode="numeric"
-              pattern="[0-9]{3}"
-              maxLength={3}
-              required
-            />
-          </div>
-          <div className="input-field">
-            <label className="input-label" htmlFor="expiration-date-input">
-              Expiration Date
-            </label>
-            <input
-              id="expiration-date-input"
-              className="input"
-              type="month"
-              required
-            />
-          </div>
-          <div className="input-field">
-            <label className="input-label" htmlFor="full-name-input">
-              Full Name as It Appears on Card
-            </label>
-            <input id="full-name-input" className="input" required />
-          </div>
-        </form>
-      </section>
-      <section className="section">
-        <h2 className="heading">Shipping Information</h2>
-        {/* TODO: Implement controlled form */}
-        <form className="form">
-          <div className="input-field">
-            <label className="input-label" htmlFor="email-input">
-              Email
-            </label>
-            <input id="email-input" className="input" type="email" required />
-          </div>
-          <div className="input-field">
-            <label className="input-label" htmlFor="address-1-input">
-              Address Line 1
-            </label>
-            <input id="address-1-input" className="input" required />
-          </div>
-          <div className="input-field">
-            <label className="input-label" htmlFor="address-2-input">
-              Address Line 2 <span className="optional">(Optional)</span>
-            </label>
-            <input id="address-2-input" className="input" />
-          </div>
-          <div className="input-field">
-            <label className="input-label" htmlFor="city-input">
-              City
-            </label>
-            <input id="city-input" className="input" required />
-          </div>
-          <div className="input-field">
-            <label className="input-label" htmlFor="state-input">
-              State
-            </label>
-            <input id="state-input" className="input" required />
-          </div>
-          <div className="input-field">
-            <label className="input-label" htmlFor="zip-code-input">
-              ZIP Code
-            </label>
-            <input
-              id="zip-code-input"
-              className="input"
-              inputMode="numeric"
-              pattern="[0-9]{5}"
-              maxLength={5}
-              required
-            />
-          </div>
-          <div className="input-field">
-            <label className="input-label" htmlFor="country-input">
-              Country
-            </label>
-            <input id="country-input" className="input" required />
-          </div>
-          <div className="input-field">
-            <label className="input-label" htmlFor="instructions-input">
-              Special Instructions <span className="optional">(Optional)</span>
-            </label>
-            <textarea id="instructions-input" className="input" rows={3} />
-          </div>
-        </form>
-      </section>
+      <OrderSummary />
+      <BillingInformation
+        formSubmitted={formSubmitted}
+        onSetValidity={setBillingInformationValid}
+      />
+      <ShippingInformation
+        formSubmitted={formSubmitted}
+        onSetValidity={setShippingInformationValid}
+      />
       <div className="place-order-button-container">
         {/* TODO: Implement place order */}
-        <button className="place-order-button">Place Order</button>
+        <button className="place-order-button" onClick={handlePlaceOrder}>
+          Place Order
+        </button>
       </div>
     </>
   );
