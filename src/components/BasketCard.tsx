@@ -4,12 +4,7 @@ import { BasketDispatchContext } from '../context/BasketProvider';
 import MinusIcon from '../icons/MinusIcon';
 import PlusIcon from '../icons/PlusIcon';
 import RemoveIcon from '../icons/RemoveIcon';
-
-interface BasketItem {
-  name: string;
-  price: number;
-  quantity: number;
-}
+import type { BasketItem, ProductName } from '../types/types';
 
 interface BasketCardProps {
   item: BasketItem;
@@ -18,21 +13,21 @@ interface BasketCardProps {
 function BasketCard({ item }: BasketCardProps) {
   const dispatch = useContext(BasketDispatchContext);
 
-  function handleDecrement(name: string) {
+  function handleDecrement(name: ProductName) {
     dispatch({
       type: 'decremented_quantity',
       payload: { name }
     });
   }
 
-  function handleIncrement(name: string) {
+  function handleIncrement(name: ProductName) {
     dispatch({
       type: 'incremented_quantity',
       payload: { name }
     });
   }
 
-  function handleRemove(name: string) {
+  function handleRemove(name: ProductName) {
     dispatch({
       type: 'removed',
       payload: { name }
@@ -45,7 +40,7 @@ function BasketCard({ item }: BasketCardProps) {
       {/* TODO: Remove fixed width and height */}
       <img
         className="basket-card-image"
-        src={imageDictionary['test']}
+        src={imageDictionary[item.name]}
         alt={item.name}
         width={100}
         height={100}

@@ -1,12 +1,7 @@
 import { useContext } from 'react';
 import imageDictionary from '../assets/images';
 import { BasketDispatchContext } from '../context/BasketProvider';
-
-interface Product {
-  name: string;
-  price: number;
-  description: string;
-}
+import type { Product, ProductName } from '../types/types';
 
 interface ProductCardProps {
   product: Product;
@@ -15,7 +10,7 @@ interface ProductCardProps {
 function ProductCard({ product }: ProductCardProps) {
   const dispatch = useContext(BasketDispatchContext);
 
-  function handleAddToBasket(name: string, price: number) {
+  function handleAddToBasket(name: ProductName, price: number) {
     dispatch({
       type: 'added',
       payload: { name, price }
@@ -29,7 +24,7 @@ function ProductCard({ product }: ProductCardProps) {
       <div className="product-card-except-button">
         <img
           className="product-card-image"
-          src={imageDictionary['test']}
+          src={imageDictionary[product.name]}
           alt={product.name}
           width={100}
           height={100}

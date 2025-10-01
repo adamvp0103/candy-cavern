@@ -1,35 +1,30 @@
 import { createContext, useReducer, type Dispatch } from 'react';
-
-interface BasketItem {
-  name: string;
-  price: number;
-  quantity: number;
-}
+import type { BasketItem, ProductName } from '../types/types';
 
 type Action =
   | {
       type: 'added';
       payload: {
-        name: string;
+        name: ProductName;
         price: number;
       };
     }
   | {
       type: 'incremented_quantity';
       payload: {
-        name: string;
+        name: ProductName;
       };
     }
   | {
       type: 'decremented_quantity';
       payload: {
-        name: string;
+        name: ProductName;
       };
     }
   | {
       type: 'removed';
       payload: {
-        name: string;
+        name: ProductName;
       };
     }
   | {
@@ -55,14 +50,16 @@ function basketReducer(basket: BasketItem[], action: Action) {
         { name: action.payload.name, price: action.payload.price, quantity: 1 }
       ];
     case 'incremented_quantity':
-      const itemToIncrement = basket.find(item => item.name === action.payload.name);
+      const itemToIncrement = basket.find(
+        item => item.name === action.payload.name
+      );
 
       if (!itemToIncrement) return basket;
 
       if (itemToIncrement.quantity > 9) {
         return basket.filter(item => item.name !== action.payload.name);
       }
-      
+
       return basket.map(item => {
         if (item.name === action.payload.name) {
           return {
@@ -73,7 +70,9 @@ function basketReducer(basket: BasketItem[], action: Action) {
         return item;
       });
     case 'decremented_quantity':
-      const itemToDecrement = basket.find(item => item.name === action.payload.name);
+      const itemToDecrement = basket.find(
+        item => item.name === action.payload.name
+      );
 
       if (!itemToDecrement) return basket;
 

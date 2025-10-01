@@ -8,14 +8,15 @@ import ProductCard from './components/ProductCard';
 import background from './assets/images/background.png';
 import OrderConfirmationOverlay from './components/OrderConfirmationOverlay';
 import { OverlayContext } from './context/OverlayProvider';
+import type { Category } from './types/types';
 
 function App() {
   const overlayContext = useContext(OverlayContext);
 
-  const [categories, setCategories] = useState<typeof categoryData>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
-    setCategories(categoryData);
+    setCategories(categoryData as Category[]);
   }, []);
 
   return (
