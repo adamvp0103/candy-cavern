@@ -19,15 +19,11 @@ function ProductCard({ product }: ProductCardProps) {
 
   return (
     <li className="product-card" key={product.name}>
-      {/* TODO: Replace "test" with product.name after configuring image dictionary */}
-      {/* TODO: Remove fixed width and height */}
       <div className="product-card-except-button">
         <img
           className="product-card-image"
           src={imageDictionary[product.name]}
           alt={product.name}
-          width={100}
-          height={100}
         />
         <div className="product-card-info">
           <div className="product-card-title-and-price">
@@ -37,7 +33,6 @@ function ProductCard({ product }: ProductCardProps) {
           <p>{product.description}</p>
         </div>
       </div>
-      {/* TODO: Implement add to basket */}
       <button
         className="product-card-button"
         onClick={() => handleAddToBasket(product.name, product.price)}

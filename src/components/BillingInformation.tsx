@@ -22,7 +22,6 @@ function BillingInformation({
   return (
     <section className="section">
       <h2 className="heading">Billing Information</h2>
-      {/* TODO: Implement controlled form */}
       <form className="form">
         <div className="input-field">
           <label className="input-label" htmlFor="card-number-input">

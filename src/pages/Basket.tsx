@@ -45,7 +45,6 @@ function Basket() {
       </section>
       {basket.length > 0 && (
         <div className="basket-buttons">
-          {/* TODO: Implement clear basket */}
           <button className="clear-basket-button" onClick={handleClearBasket}>
             Clear Basket
           </button>

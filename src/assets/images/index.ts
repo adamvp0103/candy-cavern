@@ -1,4 +1,3 @@
-// TODO: Add and import all product images
 import milkChocolateBarImage from './products/milk-chocolate-bar.png';
 import darkChocolateTrufflesImage from './products/dark-chocolate-truffles.png';
 import chocolateCoveredAlmondsImage from './products/chocolate-covered-almonds.png';
@@ -20,7 +19,6 @@ import chocolateFudgeImage from './products/chocolate-fudge.png';
 import peanutButterFudgeImage from './products/peanut-butter-fudge.png';
 import type { ProductName } from '../../types/types';
 
-// TODO: Add all product keys and image references
 const imageDictionary: Record<ProductName, string> = {
   'Milk Chocolate Bar': milkChocolateBarImage,
   'Dark Chocolate Truffles': darkChocolateTrufflesImage,

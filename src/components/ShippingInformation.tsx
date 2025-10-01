@@ -26,7 +26,6 @@ function ShippingInformation({
   return (
     <section className="section">
       <h2 className="heading">Shipping Information</h2>
-      {/* TODO: Implement controlled form */}
       <form className="form">
         <div className="input-field">
           <label className="input-label" htmlFor="email-input">

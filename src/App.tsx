@@ -24,7 +24,6 @@ function App() {
       <img className="background" src={background} />
       <Header />
       <div className="right-nav-button-container">
-        {/* TODO: Replace with basket icon */}
         <Link to="/basket" style={{ textDecoration: 'none' }}>
           <button className="nav-button">
             <BasketIcon />

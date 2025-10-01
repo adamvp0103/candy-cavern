@@ -52,7 +52,6 @@ function Checkout() {
         onSetValidity={setShippingInformationValid}
       />
       <div className="place-order-button-container">
-        {/* TODO: Implement place order */}
         <button className="place-order-button" onClick={handlePlaceOrder}>
           Place Order
         </button>

@@ -36,14 +36,10 @@ function BasketCard({ item }: BasketCardProps) {
 
   return (
     <li className="basket-card" key={item.name}>
-      {/* TODO: Replace "test" with product.name after configuring image dictionary */}
-      {/* TODO: Remove fixed width and height */}
       <img
         className="basket-card-image"
         src={imageDictionary[item.name]}
         alt={item.name}
-        width={100}
-        height={100}
       />
       <div className="basket-card-except-image">
         <div className="basket-card-title-and-price">
@@ -52,7 +48,6 @@ function BasketCard({ item }: BasketCardProps) {
         </div>
         <div className="basket-card-quantity-and-remove">
           <div className="basket-card-quantity">
-            {/* TODO: Implement quantity decrement */}
             <button
               className="quantity-button"
               onClick={() => handleDecrement(item.name)}
@@ -61,7 +56,6 @@ function BasketCard({ item }: BasketCardProps) {
               <MinusIcon />
             </button>
             <span className="basket-quantity">{item.quantity}</span>
-            {/* TODO: Implement quantity increment */}
             <button
               className="quantity-button"
               onClick={() => handleIncrement(item.name)}
@@ -70,8 +64,6 @@ function BasketCard({ item }: BasketCardProps) {
               <PlusIcon />
             </button>
           </div>
-          {/* TODO: Implement removal */}
-          {/* TODO: Replace with remove icon */}
           <button
             className="remove-button"
             onClick={() => handleRemove(item.name)}
