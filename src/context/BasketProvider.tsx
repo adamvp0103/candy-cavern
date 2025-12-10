@@ -1,45 +1,45 @@
-import { createContext, useReducer, type Dispatch } from 'react';
-import type { BasketItem, ProductName } from '../types/types';
+import { createContext, useReducer, type Dispatch } from "react";
+import type { BasketItem, ProductName } from "../types/types";
 
 type Action =
   | {
-      type: 'added';
+      type: "added";
       payload: {
         name: ProductName;
         price: number;
       };
     }
   | {
-      type: 'incremented_quantity';
+      type: "incremented_quantity";
       payload: {
         name: ProductName;
       };
     }
   | {
-      type: 'decremented_quantity';
+      type: "decremented_quantity";
       payload: {
         name: ProductName;
       };
     }
   | {
-      type: 'removed';
+      type: "removed";
       payload: {
         name: ProductName;
       };
     }
   | {
-      type: 'cleared';
+      type: "cleared";
     };
 
 function basketReducer(basket: BasketItem[], action: Action) {
   switch (action.type) {
-    case 'added':
-      if (basket.some(item => item.name === action.payload.name)) {
-        return basket.map(item => {
-          if (item.name === action.payload.name) {
+    case "added":
+      if (basket.some((item) => item.name === action.payload.name)) {
+        return basket.map((item) => {
+          if (item.name === action.payload.name && item.quantity < 10) {
             return {
               ...item,
-              quantity: item.quantity + 1
+              quantity: item.quantity + 1,
             };
           }
           return item;
@@ -47,51 +47,51 @@ function basketReducer(basket: BasketItem[], action: Action) {
       }
       return [
         ...basket,
-        { name: action.payload.name, price: action.payload.price, quantity: 1 }
+        { name: action.payload.name, price: action.payload.price, quantity: 1 },
       ];
-    case 'incremented_quantity':
+    case "incremented_quantity":
       const itemToIncrement = basket.find(
-        item => item.name === action.payload.name
+        (item) => item.name === action.payload.name
       );
 
       if (!itemToIncrement) return basket;
 
       if (itemToIncrement.quantity > 9) {
-        return basket.filter(item => item.name !== action.payload.name);
+        return basket.filter((item) => item.name !== action.payload.name);
       }
 
-      return basket.map(item => {
+      return basket.map((item) => {
         if (item.name === action.payload.name) {
           return {
             ...item,
-            quantity: item.quantity + 1
+            quantity: item.quantity + 1,
           };
         }
         return item;
       });
-    case 'decremented_quantity':
+    case "decremented_quantity":
       const itemToDecrement = basket.find(
-        item => item.name === action.payload.name
+        (item) => item.name === action.payload.name
       );
 
       if (!itemToDecrement) return basket;
 
       if (itemToDecrement.quantity < 2) {
-        return basket.filter(item => item.name !== action.payload.name);
+        return basket.filter((item) => item.name !== action.payload.name);
       }
 
-      return basket.map(item => {
+      return basket.map((item) => {
         if (item.name === action.payload.name) {
           return {
             ...item,
-            quantity: item.quantity - 1
+            quantity: item.quantity - 1,
           };
         }
         return item;
       });
-    case 'removed':
-      return basket.filter(item => item.name !== action.payload.name);
-    case 'cleared':
+    case "removed":
+      return basket.filter((item) => item.name !== action.payload.name);
+    case "cleared":
       return [];
   }
 }

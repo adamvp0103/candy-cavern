@@ -67,6 +67,7 @@
 }
 
 .nav-button {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,6 +83,21 @@
 
 .nav-button:hover {
   filter: brightness(90%);
+}
+
+.basket-indicator {
+  position: absolute;
+  top: -0.5rem;
+  left: -0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: #ce134e;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  font-size: 1rem;
 }
 
 .icon {
