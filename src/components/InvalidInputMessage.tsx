@@ -1,4 +1,5 @@
-import WarningIcon from '../icons/WarningIcon';
+import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface InvalidInputMessageProps {
   message: string;
@@ -7,7 +8,7 @@ interface InvalidInputMessageProps {
 function InvalidInputMessage({ message }: InvalidInputMessageProps) {
   return (
     <div className="invalid-input-message">
-      <WarningIcon />
+      <FontAwesomeIcon icon={faCircleExclamation} />
       <span>{message}</span>
     </div>
   );

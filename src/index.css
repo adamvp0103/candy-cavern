@@ -13,7 +13,7 @@
 }
 
 :root {
-  background-color: #5f0c80;
+  /* background-color: #5f0c80; */
 
   --vertical-padding: 1rem;
   --horizontal-padding: 1rem;
@@ -25,16 +25,12 @@
 }
 
 body {
-  background: radial-gradient(hsla(270, 100%, 40%) hsla(270, 100%, 40%));
-}
-
-.background {
-  position: fixed;
-  top: 0;
-  z-index: -999;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
+  background: radial-gradient(
+    circle at center,
+    hsla(270, 90%, 20%),
+    hsla(270, 90%, 40%)
+  );
+  background-attachment: fixed;
 }
 
 .header {

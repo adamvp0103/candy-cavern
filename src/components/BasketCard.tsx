@@ -1,74 +1,63 @@
-import { useContext } from 'react';
-import imageDictionary from '../assets/images';
-import { BasketDispatchContext } from '../context/BasketProvider';
-import MinusIcon from '../icons/MinusIcon';
-import PlusIcon from '../icons/PlusIcon';
-import RemoveIcon from '../icons/RemoveIcon';
-import type { BasketItem, ProductName } from '../types/types';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { Product } from "../types/types";
+import { faMinus, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 interface BasketCardProps {
-  item: BasketItem;
+  product: Product | undefined;
+  quantity: number;
+  addOne: (product: Product) => void;
+  removeOne: (productName: string) => void;
+  removeAll: (productName: string) => void;
 }
 
-function BasketCard({ item }: BasketCardProps) {
-  const dispatch = useContext(BasketDispatchContext);
-
-  function handleDecrement(name: ProductName) {
-    dispatch({
-      type: 'decremented_quantity',
-      payload: { name }
-    });
+function BasketCard({
+  product,
+  quantity,
+  addOne,
+  removeOne,
+  removeAll,
+}: BasketCardProps) {
+  if (!product) {
+    console.error(
+      "'product' provided as prop to 'BasketCard' instance was not defined."
+    );
+    return <li>Product not found</li>;
   }
 
-  function handleIncrement(name: ProductName) {
-    dispatch({
-      type: 'incremented_quantity',
-      payload: { name }
-    });
-  }
-
-  function handleRemove(name: ProductName) {
-    dispatch({
-      type: 'removed',
-      payload: { name }
-    });
-  }
+  const src = `../assets/images/products/${product.image}`;
+  const quantityLimit = 10;
 
   return (
-    <li className="basket-card" key={item.name}>
-      <img
-        className="basket-card-image"
-        src={imageDictionary[item.name]}
-        alt={item.name}
-      />
+    <li className="basket-card" key={product.name}>
+      <img className="basket-card-image" src={src} alt={product.name} />
       <div className="basket-card-except-image">
         <div className="basket-card-title-and-price">
-          <h3>{item.name}</h3>
-          <span className="price">${item.price.toFixed(2)}</span>
+          <h3>{product.name}</h3>
+          <span className="price">${product.price.toFixed(2)}</span>
         </div>
         <div className="basket-card-quantity-and-remove">
           <div className="basket-card-quantity">
             <button
               className="quantity-button"
-              onClick={() => handleDecrement(item.name)}
-              disabled={item.quantity < 2}
+              onClick={() => removeOne(product.name)}
+              disabled={quantity === 1}
             >
-              <MinusIcon />
+              <FontAwesomeIcon icon={faMinus} />
             </button>
-            <span className="basket-quantity">{item.quantity}</span>
+            <span className="basket-quantity">{quantity}</span>
             <button
               className="quantity-button"
-              onClick={() => handleIncrement(item.name)}
-              disabled={item.quantity > 9}
+              onClick={() => addOne(product)}
+              disabled={quantity === quantityLimit}
             >
-              <PlusIcon />
+              <FontAwesomeIcon icon={faPlus} />
             </button>
           </div>
           <button
             className="remove-button"
-            onClick={() => handleRemove(item.name)}
+            onClick={() => removeAll(product.name)}
           >
-            <RemoveIcon />
+            <FontAwesomeIcon icon={faTrash} />
           </button>
         </div>
       </div>

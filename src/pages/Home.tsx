@@ -2,21 +2,22 @@ import Header from "../components/Header";
 import Menu from "../components/Menu";
 import Nav from "../components/Nav";
 import Search from "../components/Search";
-import type { Product, ProductInfo } from "../types/types";
+import type { Product } from "../types/types";
 
 interface HomeProps {
-  productInfo: ProductInfo;
+  products: Product[];
+  handleAddToBasket: (name: string) => void;
 }
 
-function Home({ productInfo }: HomeProps) {
+function Home({ products, handleAddToBasket }: HomeProps) {
   return (
     <>
       <Header />
       <Nav />
       <main>
         <h1>Home</h1>
-        <Search products={productInfo.products} />
-        <Menu productInfo={productInfo} />
+        <Search products={products} handleAddToBasket={handleAddToBasket} />
+        <Menu products={products} handleAddToBasket={handleAddToBasket} />
       </main>
     </>
   );

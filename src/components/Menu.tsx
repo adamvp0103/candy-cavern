@@ -1,23 +1,35 @@
-import type { ProductInfo } from "../types/types";
+import type { Product } from "../types/types";
 import BrowseCard from "./BrowseCard";
 
 interface MenuProps {
-  productInfo: ProductInfo;
+  products: Product[];
+  handleAddToBasket: (name: string) => void;
 }
 
-function Menu({ productInfo }: MenuProps) {
+function Menu({ products, handleAddToBasket }: MenuProps) {
+  const categories: string[] = [];
+
+  for (const product of products) {
+    if (!categories.includes(product.category)) {
+      categories.push(product.category);
+    }
+  }
+
   return (
     <section>
       <h2>Menu</h2>
-      {productInfo.categories.map((category) => (
+      {categories.map((category) => (
         <section key={category}>
           <h3>{category}</h3>
           <ul>
-            {productInfo.products
+            {products
               .filter((product) => product.category === category)
               .map((product) => (
                 <li key={product.name}>
-                  <BrowseCard product={product} />
+                  <BrowseCard
+                    product={product}
+                    handleAddToBasket={handleAddToBasket}
+                  />
                 </li>
               ))}
           </ul>

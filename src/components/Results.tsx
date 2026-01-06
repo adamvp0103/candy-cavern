@@ -6,9 +6,10 @@ import { useState } from "react";
 
 interface ResultsProps {
   results: Product[];
+  handleAddToBasket: (name: string) => void;
 }
 
-function Results({ results }: ResultsProps) {
+function Results({ results, handleAddToBasket }: ResultsProps) {
   if (results.length === 0) {
     return <span>No results</span>;
   }
@@ -54,7 +55,10 @@ function Results({ results }: ResultsProps) {
         {results
           .slice(page * resultsPerPage, page * resultsPerPage + resultsPerPage)
           .map((result) => (
-            <BrowseCard product={result} />
+            <BrowseCard
+              product={result}
+              handleAddToBasket={handleAddToBasket}
+            />
           ))}
       </ul>
     </>

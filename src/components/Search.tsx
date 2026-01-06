@@ -1,12 +1,13 @@
-import { useEffect, useState, type ChangeEvent } from "react";
+import { useState, type ChangeEvent } from "react";
 import type { Product } from "../types/types";
 import Results from "./Results";
 
 interface SearchProps {
   products: Product[];
+  handleAddToBasket: (name: string) => void;
 }
 
-function Search({ products }: SearchProps) {
+function Search({ products, handleAddToBasket }: SearchProps) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Product[]>([]);
 
@@ -35,7 +36,9 @@ function Search({ products }: SearchProps) {
           onChange={(event) => handleQueryChange(event)}
         />
       </search>
-      {query && <Results results={results} />}
+      {query && (
+        <Results results={results} handleAddToBasket={handleAddToBasket} />
+      )}
     </section>
   );
 }
