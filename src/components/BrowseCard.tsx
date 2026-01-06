@@ -1,19 +1,23 @@
-import { useContext } from 'react';
-import imageDictionary from '../assets/images';
-import { BasketDispatchContext } from '../context/BasketProvider';
-import type { Product, ProductName } from '../types/types';
+import { useContext } from "react";
+import imageDictionary from "../assets/images";
+import { BasketDispatchContext } from "../context/BasketProvider";
+import type { Product } from "../types/types";
+
+// Font Awesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 interface ProductCardProps {
   product: Product;
 }
 
-function ProductCard({ product }: ProductCardProps) {
+function BrowseCard({ product }: ProductCardProps) {
   const dispatch = useContext(BasketDispatchContext);
 
-  function handleAddToBasket(name: ProductName, price: number) {
+  function handleAddToBasket(name: string, price: number) {
     dispatch({
-      type: 'added',
-      payload: { name, price }
+      type: "added",
+      payload: { name, price },
     });
   }
 
@@ -37,10 +41,11 @@ function ProductCard({ product }: ProductCardProps) {
         className="product-card-button"
         onClick={() => handleAddToBasket(product.name, product.price)}
       >
-        Add to Basket
+        <FontAwesomeIcon icon={faPlus} />
+        <span>Add to Basket</span>
       </button>
     </li>
   );
 }
 
-export default ProductCard;
+export default BrowseCard;

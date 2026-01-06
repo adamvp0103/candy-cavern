@@ -1,0 +1,125 @@
+{
+  "categories": [
+    "Chocolates",
+    "Gummies",
+    "Hard Candy",
+    "Coated & Crunchy",
+    "Caramel & Fudge"
+  ],
+  "products": [
+    {
+      "name": "Milk Chocolate Bar",
+      "price": 2.5,
+      "description": "Creamy, smooth milk chocolate that melts in your mouth.",
+      "category": "Chocolates"
+    },
+    {
+      "name": "Dark Chocolate Truffles",
+      "price": 6,
+      "description": "Rich, decadent bites with a silky dark chocolate center.",
+      "category": "Chocolates"
+    },
+    {
+      "name": "Chocolate-Covered Almonds",
+      "price": 4.75,
+      "description": "Crunchy roasted almonds dipped in velvety milk chocolate.",
+      "category": "Chocolates"
+    },
+    {
+      "name": "Caramel-Filled Squares",
+      "price": 3.25,
+      "description": "Bite-sized chocolate squares with gooey caramel inside.",
+      "category": "Chocolates"
+    },
+    {
+      "name": "White Chocolate Bark with Sprinkles",
+      "price": 5,
+      "description": "Sweet white chocolate topped with colorful candy sprinkles.",
+      "category": "Chocolates"
+    },
+    {
+      "name": "Sour Gummy Worms",
+      "price": 2.75,
+      "description": "Tangy, chewy worms coated in sour sugar.",
+      "category": "Gummies"
+    },
+    {
+      "name": "Fruity Gummy Bears",
+      "price": 3.25,
+      "description": "Classic rainbow bears bursting with fruity flavors.",
+      "category": "Gummies"
+    },
+    {
+      "name": "Chewy Fruit Slices",
+      "price": 3,
+      "description": "Sugar-dusted slices in orange, lemon, and cherry.",
+      "category": "Gummies"
+    },
+    {
+      "name": "Rainbow Swirl Lollipops",
+      "price": 2,
+      "description": "Whimsical swirls of fruity hard candy on a stick.",
+      "category": "Hard Candy"
+    },
+    {
+      "name": "Butterscotch Discs",
+      "price": 2.25,
+      "description": "Smooth, buttery flavor in golden hard candy.",
+      "category": "Hard Candy"
+    },
+    {
+      "name": "Peppermint Rounds",
+      "price": 2,
+      "description": "Classic red-and-white mints with a refreshing zing.",
+      "category": "Hard Candy"
+    },
+    {
+      "name": "Fruit-Flavored Jolly Drops",
+      "price": 3,
+      "description": "Tiny, hard candies in assorted fruity flavors.",
+      "category": "Hard Candy"
+    },
+    {
+      "name": "Chocolate-Covered Pretzels",
+      "price": 4.25,
+      "description": "Salty pretzels dipped in smooth milk chocolate.",
+      "category": "Coated & Crunchy"
+    },
+    {
+      "name": "Peanut Butter Candy-Coated Pieces",
+      "price": 3.5,
+      "description": "Colorful shells with a peanut butter crunch inside.",
+      "category": "Coated & Crunchy"
+    },
+    {
+      "name": "Crispy Rice Chocolate Clusters",
+      "price": 3.75,
+      "description": "Crunchy puffed rice coated in milk chocolate.",
+      "category": "Coated & Crunchy"
+    },
+    {
+      "name": "Soft Chewy Caramels",
+      "price": 3.75,
+      "description": "Golden, buttery caramels that melt slowly in your mouth.",
+      "category": "Caramel & Fudge"
+    },
+    {
+      "name": "Sea Salt Caramel Squares",
+      "price": 4.25,
+      "description": "Sweet caramel with a sprinkle of sea salt for balance.",
+      "category": "Caramel & Fudge"
+    },
+    {
+      "name": "Chocolate Fudge",
+      "price": 5,
+      "description": "Dense, smooth fudge made with rich cocoa.",
+      "category": "Caramel & Fudge"
+    },
+    {
+      "name": "Peanut Butter Fudge",
+      "price": 5.25,
+      "description": "Creamy, nutty fudge with a melt-in-your-mouth texture.",
+      "category": "Caramel & Fudge"
+    }
+  ]
+}

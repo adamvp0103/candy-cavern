@@ -1,13 +1,13 @@
-import { Link } from 'react-router';
-import Header from '../components/Header';
-import { useContext } from 'react';
-import BackIcon from '../icons/BackIcon';
-import BasketCard from '../components/BasketCard';
-import background from '../assets/images/background.png';
+import { Link } from "react-router";
+import Header from "../components/Header";
+import { useContext } from "react";
+import BasketCard from "../components/BasketCard";
+import background from "../assets/images/background.png";
 import {
   BasketContext,
-  BasketDispatchContext
-} from '../context/BasketProvider';
+  BasketDispatchContext,
+} from "../context/BasketProvider";
+import BackIcon from "../icons/BackIcon";
 
 function Basket() {
   const basket = useContext(BasketContext);
@@ -15,7 +15,7 @@ function Basket() {
 
   function handleClearBasket() {
     dispatch({
-      type: 'cleared'
+      type: "cleared",
     });
   }
 
@@ -24,7 +24,7 @@ function Basket() {
       <img className="background" src={background} />
       <Header />
       <div className="left-nav-button-container">
-        <Link to="/" style={{ textDecoration: 'none' }}>
+        <Link to="/" style={{ textDecoration: "none" }}>
           <button className="nav-button">
             <BackIcon />
             <span className="nav-button-text">Products</span>
@@ -35,7 +35,7 @@ function Basket() {
         <h2 className="heading">Your Basket</h2>
         {basket.length > 0 ? (
           <ul className="basket-card-list">
-            {basket.map(item => (
+            {basket.map((item) => (
               <BasketCard item={item} />
             ))}
           </ul>
@@ -49,7 +49,7 @@ function Basket() {
             Clear Basket
           </button>
           <button className="check-out-button">
-            <Link to="/checkout" style={{ textDecoration: 'none' }}>
+            <Link to="/checkout" style={{ textDecoration: "none" }}>
               <div className="check-out-button-text">Check Out</div>
             </Link>
           </button>

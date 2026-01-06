@@ -1,37 +1,37 @@
 import { createContext, useReducer, type Dispatch } from "react";
-import type { BasketItem, ProductName } from "../types/types";
+import type { BasketItem } from "../types/types";
 
-type Action =
+type BasketAction =
   | {
       type: "added";
       payload: {
-        name: ProductName;
+        name: string;
         price: number;
       };
     }
   | {
       type: "incremented_quantity";
       payload: {
-        name: ProductName;
+        name: string;
       };
     }
   | {
       type: "decremented_quantity";
       payload: {
-        name: ProductName;
+        name: string;
       };
     }
   | {
       type: "removed";
       payload: {
-        name: ProductName;
+        name: string;
       };
     }
   | {
       type: "cleared";
     };
 
-function basketReducer(basket: BasketItem[], action: Action) {
+function basketReducer(basket: BasketItem[], action: BasketAction) {
   switch (action.type) {
     case "added":
       if (basket.some((item) => item.name === action.payload.name)) {
@@ -97,7 +97,9 @@ function basketReducer(basket: BasketItem[], action: Action) {
 }
 
 export const BasketContext = createContext<BasketItem[]>([]);
-export const BasketDispatchContext = createContext<Dispatch<Action>>(() => {});
+export const BasketDispatchContext = createContext<Dispatch<BasketAction>>(
+  () => {}
+);
 
 interface BasketProviderProps {
   children: React.ReactNode;

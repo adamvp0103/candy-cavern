@@ -1,9 +1,9 @@
-import { useContext } from 'react';
-import CloseIcon from '../icons/CloseIcon';
-import ConfirmationIcon from '../icons/ConfirmationIcon';
-import { OverlayContext } from '../context/OverlayProvider';
+import { useContext } from "react";
+import CloseIcon from "../icons/CloseIcon";
+import ConfirmationIcon from "../icons/ConfirmationIcon";
+import { OverlayContext } from "../context/OverlayProvider";
 
-function OrderConfirmationOverlay() {
+function OrderConfirmation() {
   const overlayContext = useContext(OverlayContext);
 
   function handleClose() {
@@ -24,4 +24,4 @@ function OrderConfirmationOverlay() {
   );
 }
 
-export default OrderConfirmationOverlay;
+export default OrderConfirmation;

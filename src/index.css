@@ -7,7 +7,7 @@
 
   font-family: Fredoka, sans-serif;
   text-shadow: var(--shadow);
-  color: #fff;
+  /* color: #fff; */
 
   /* outline: 1px solid red; */
 }
@@ -17,11 +17,15 @@
 
   --vertical-padding: 1rem;
   --horizontal-padding: 1rem;
-  --title-font-family: 'Fontdiner Swanky', fantasy;
+  --title-font-family: "Fontdiner Swanky", fantasy;
   --primary: #e670a9;
   --danger: #ce134e;
   --confirm: #12c362;
   --shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+body {
+  background: radial-gradient(hsla(270, 100%, 40%) hsla(270, 100%, 40%));
 }
 
 .background {
@@ -98,10 +102,6 @@
   background-color: #ce134e;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   font-size: 1rem;
-}
-
-.icon {
-  filter: drop-shadow(var(--shadow));
 }
 
 .nav-button-text {
