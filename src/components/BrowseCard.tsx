@@ -10,12 +10,14 @@ interface BrowseCardProps {
 }
 
 function BrowseCard({ product, handleAddToBasket }: BrowseCardProps) {
-  const src = `../assets/images/products/${product.image}`;
-
   return (
     <li className="product-card" key={product.name}>
       <div className="product-card-except-button">
-        <img className="product-card-image" src={src} alt={product.name} />
+        <img
+          className="product-card-image"
+          src={`/images/${product.image}`}
+          alt={product.name}
+        />
         <div className="product-card-info">
           <div className="product-card-title-and-price">
             <h3>{product.name}</h3>
