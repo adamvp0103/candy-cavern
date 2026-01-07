@@ -1,23 +1,10 @@
-import { useEffect, useState } from "react";
-import InvalidInputMessage from "./InvalidInputMessage";
+import { useState } from "react";
 
-interface BillingInformationProps {
-  formSubmitted: boolean;
-  onSetValidity: (validity: boolean) => void;
-}
-
-function BillingInformation({
-  formSubmitted,
-  onSetValidity,
-}: BillingInformationProps) {
+function BillingInformation() {
   const [cardNumber, setCardNumber] = useState("");
   const [securityCode, setSecurityCode] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
   const [fullName, setFullName] = useState("");
-
-  useEffect(() => {
-    onSetValidity(!!(cardNumber && securityCode && expirationDate && fullName));
-  }, [cardNumber, securityCode, expirationDate, fullName]);
 
   return (
     <fieldset className="section">

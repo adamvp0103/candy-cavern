@@ -4,7 +4,7 @@ import Basket from "./pages/Basket";
 import Checkout from "./pages/Checkout";
 import { useState } from "react";
 import products from "./data/products.json";
-import type { BasketItem, Product } from "./types/types";
+import type { BasketItem } from "./types/types";
 
 function App() {
   const [basket, setBasket] = useState<BasketItem[]>([]);

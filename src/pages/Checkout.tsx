@@ -1,7 +1,5 @@
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import Header from "../components/Header";
-import { useState } from "react";
-// import OrderSummary from "../components/OrderSummary";
 import BillingInformation from "../components/BillingInformation";
 import ShippingInformation from "../components/ShippingInformation";
 import Nav from "../components/Nav";
@@ -14,20 +12,7 @@ interface CheckoutProps {
 }
 
 function Checkout({ basket, products }: CheckoutProps) {
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [billingInformationValid, setBillingInformationValid] = useState(false);
-  const [shippingInformationValid, setShippingInformationValid] =
-    useState(false);
-
   const navigate = useNavigate();
-
-  function handlePlaceOrder() {
-    setFormSubmitted(true);
-    if (billingInformationValid && shippingInformationValid) {
-      navigate("/");
-      setFormSubmitted(false);
-    }
-  }
 
   return (
     <>
@@ -39,21 +24,10 @@ function Checkout({ basket, products }: CheckoutProps) {
           <>
             <OrderSummary basket={basket} products={products} />
             <section>
-              <form>
-                <BillingInformation
-                  formSubmitted={formSubmitted}
-                  onSetValidity={setBillingInformationValid}
-                />
-                <ShippingInformation
-                  formSubmitted={formSubmitted}
-                  onSetValidity={setShippingInformationValid}
-                />
-                <button
-                  className="place-order-button"
-                  onClick={handlePlaceOrder}
-                >
-                  Place Order
-                </button>
+              <form onSubmit={() => navigate("/")}>
+                <BillingInformation />
+                <ShippingInformation />
+                <button className="place-order-button">Place Order</button>
               </form>
             </section>
           </>
