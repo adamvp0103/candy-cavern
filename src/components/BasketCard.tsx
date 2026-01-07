@@ -24,12 +24,15 @@ function BasketCard({
     return <li>Product not found</li>;
   }
 
-  const src = `../assets/images/products/${product.image}`;
   const quantityLimit = 10;
 
   return (
     <li className="basket-card" key={product.name}>
-      <img className="basket-card-image" src={src} alt={product.name} />
+      <img
+        className="basket-card-image"
+        src={`/images/${product.image}`}
+        alt={product.name}
+      />
       <div className="basket-card-except-image">
         <div className="basket-card-title-and-price">
           <h3>{product.name}</h3>

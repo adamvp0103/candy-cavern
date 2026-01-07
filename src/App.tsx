@@ -46,7 +46,10 @@ function App() {
               />
             }
           />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route
+            path="/checkout"
+            element={<Checkout basket={basket} products={products} />}
+          />
         </Routes>
       </BrowserRouter>
     </>

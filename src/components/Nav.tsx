@@ -23,7 +23,7 @@ function Nav() {
           </Link>
         </li>
         <li>
-          <Link to="/">
+          <Link to="/checkout">
             <FontAwesomeIcon icon={faCashRegister} />
             <span>Checkout</span>
           </Link>

@@ -45,7 +45,7 @@ function Basket({
       <Header />
       <Nav />
       <main>
-        <h2 className="heading">Basket</h2>
+        <h1 className="heading">Basket</h1>
 
         {/* List of basket items */}
         {basket.length > 0 ? (
