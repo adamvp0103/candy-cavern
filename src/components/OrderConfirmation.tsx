@@ -1,19 +1,20 @@
-function OrderConfirmation() {
-  function handleClose() {
-    // overlayContext.setShowOverlay(false);
-  }
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router";
 
+function OrderConfirmation() {
   return (
-    <div className="overlay">
-      <div className="overlay-content">
-        {/* <ConfirmationIcon /> */}
-        <h2 className="heading">Order Confirmed!</h2>
-        <p>Your order will ship shortly. Have a super sweet day!</p>
-        <button className="close-overlay-button" onClick={handleClose}>
-          {/* <CloseIcon /> */}
-        </button>
-      </div>
-    </div>
+    <section>
+      <h2>Order Confirmed</h2>
+      <p>
+        Thanks for shopping at Candy Cavern! You will receive an email shortly
+        with details about your order.
+      </p>
+      <Link to="/">
+        <FontAwesomeIcon icon={faHouse} />
+        <span>Return to Home Page</span>
+      </Link>
+    </section>
   );
 }
 
