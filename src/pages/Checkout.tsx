@@ -38,19 +38,24 @@ function Checkout({ basket, products }: CheckoutProps) {
         {basket.length > 0 ? (
           <>
             <OrderSummary basket={basket} products={products} />
-            <BillingInformation
-              formSubmitted={formSubmitted}
-              onSetValidity={setBillingInformationValid}
-            />
-            <ShippingInformation
-              formSubmitted={formSubmitted}
-              onSetValidity={setShippingInformationValid}
-            />
-            <div className="place-order-button-container">
-              <button className="place-order-button" onClick={handlePlaceOrder}>
-                Place Order
-              </button>
-            </div>
+            <section>
+              <form>
+                <BillingInformation
+                  formSubmitted={formSubmitted}
+                  onSetValidity={setBillingInformationValid}
+                />
+                <ShippingInformation
+                  formSubmitted={formSubmitted}
+                  onSetValidity={setShippingInformationValid}
+                />
+                <button
+                  className="place-order-button"
+                  onClick={handlePlaceOrder}
+                >
+                  Place Order
+                </button>
+              </form>
+            </section>
           </>
         ) : (
           <span>Your basket is empty</span>
