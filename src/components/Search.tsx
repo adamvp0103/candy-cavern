@@ -28,11 +28,13 @@ function Search({ products, handleAddToBasket }: SearchProps) {
 
   return (
     <section className="section">
-      <h2>Search</h2>
+      <h2 className="heading">Search</h2>
       <search>
         <input
+          className="search-bar"
           type="search"
           value={query}
+          placeholder="Enter product name..."
           onChange={(event) => handleQueryChange(event)}
         />
       </search>

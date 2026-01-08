@@ -45,7 +45,7 @@ function Basket({
       <Header />
       <Nav />
       <main>
-        <h1 className="heading">Basket</h1>
+        <h1 className="page-title">Basket</h1>
 
         {/* List of basket items */}
         {basket.length > 0 ? (
@@ -65,7 +65,7 @@ function Basket({
             ))}
           </ul>
         ) : (
-          <span className="empty-basket-message">Your basket is empty</span>
+          <span className="standalone-message">Your basket is empty</span>
         )}
 
         {/* Basket buttons */}

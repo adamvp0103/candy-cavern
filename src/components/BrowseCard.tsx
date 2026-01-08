@@ -11,28 +11,24 @@ interface BrowseCardProps {
 
 function BrowseCard({ product, handleAddToBasket }: BrowseCardProps) {
   return (
-    <li className="product-card" key={product.name}>
-      <div className="product-card-except-button">
-        <img
-          className="product-card-image"
-          src={`/images/${product.image}`}
-          alt={product.name}
-        />
-        <div className="product-card-info">
-          <div className="product-card-title-and-price">
-            <h3>{product.name}</h3>
-            <span className="price">${product.price.toFixed(2)}</span>
-          </div>
-          <p>{product.description}</p>
-        </div>
+    <li className="browse-card" key={product.name}>
+      <img
+        className="browse-card-image"
+        src={`/images/${product.image}`}
+        alt={product.name}
+      />
+      <div>
+        <h3>{product.name}</h3>
+        <span>${product.price.toFixed(2)}</span>
+        <p className="browse-card-description">{product.description}</p>
+        <button
+          className="browse-card-button"
+          onClick={() => handleAddToBasket(product.name)}
+        >
+          <FontAwesomeIcon icon={faPlus} />
+          <span className="browse-card-button-text">Add to Basket</span>
+        </button>
       </div>
-      <button
-        className="product-card-button"
-        onClick={() => handleAddToBasket(product.name)}
-      >
-        <FontAwesomeIcon icon={faPlus} />
-        <span>Add to Basket</span>
-      </button>
     </li>
   );
 }

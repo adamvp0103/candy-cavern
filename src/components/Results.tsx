@@ -11,7 +11,7 @@ interface ResultsProps {
 
 function Results({ results, handleAddToBasket }: ResultsProps) {
   if (results.length === 0) {
-    return <span>No results</span>;
+    return <span className="standalone-message">No results</span>;
   }
 
   const [page, setPage] = useState(0);
@@ -27,22 +27,24 @@ function Results({ results, handleAddToBasket }: ResultsProps) {
   return (
     <>
       {/* Result count */}
-      <span>
+      <span className="standalone-message">
         {results.length} result{results.length > 1 && "s"}
       </span>
 
-      {/* Page navigation */}
+      {/* Result navigation */}
       {results.length > resultsPerPage && (
-        <div>
+        <div className="result-nav">
           <button
+            className="result-nav-button"
             onClick={() => setPage(page === 0 ? numberOfPages - 1 : page - 1)}
           >
             <FontAwesomeIcon icon={faAngleLeft} />
           </button>
-          <span>
+          <span className="result-nav-text">
             Page {page + 1} of {numberOfPages}
           </span>
           <button
+            className="result-nav-button"
             onClick={() => setPage(page === numberOfPages - 1 ? 0 : page + 1)}
           >
             <FontAwesomeIcon icon={faAngleRight} />
@@ -51,7 +53,7 @@ function Results({ results, handleAddToBasket }: ResultsProps) {
       )}
 
       {/* Result list */}
-      <ul>
+      <ul className="results">
         {results
           .slice(page * resultsPerPage, page * resultsPerPage + resultsPerPage)
           .map((result) => (

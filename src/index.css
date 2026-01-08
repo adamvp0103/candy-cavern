@@ -5,7 +5,7 @@
   margin: 0;
   padding: 0;
 
-  /* outline: 1px solid red; */
+  /* outline: 1px solid green; */
 }
 
 :root {
@@ -86,14 +86,114 @@ body {
   padding-inline: 1rem;
 }
 
+.page-title {
+  max-width: 32rem;
+  margin-top: 1rem;
+  margin-inline: auto;
+  font-family: "Fontdiner Swanky", fantasy;
+  font-weight: normal;
+}
+
 .section {
   max-width: 32rem;
   margin-inline: auto;
 }
 
 .heading {
-  font-family: var(--title-font-family);
-  font-weight: normal;
+  margin-top: 1rem;
+  font-family: Fredoka, sans-serif;
+  font-weight: bold;
+}
+
+.search-bar {
+  width: 100%;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  font-family: Fredoka, sans-serif;
+  font-size: 1rem;
+  transition: background-color 0.1s;
+}
+
+.standalone-message {
+  display: block;
+  margin-block: 1rem;
+  text-align: center;
+}
+
+.result-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.result-nav-button {
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  background-color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+
+.result-nav-button:hover {
+  background-color: #e691b2;
+}
+
+.result-nav-text {
+  width: 8rem;
+  text-align: center;
+}
+
+.results {
+  list-style: none;
+}
+
+.browse-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  background-color: #9d2a56;
+}
+
+.browse-card-image {
+  width: 6rem;
+  aspect-ratio: 1;
+  border: 0.1rem solid #e691b2;
+  border-radius: 1rem;
+}
+
+.browse-card-description {
+  margin-top: 1rem;
+}
+
+.browse-card-button {
+  width: 100%;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  font-family: Fredoka, sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+
+.browse-card-button:hover {
+  background-color: #e691b2;
+}
+
+.browse-card-button-text {
+  margin-left: 0.1rem;
 }
 
 .product-card-list {
@@ -101,22 +201,6 @@ body {
   flex-direction: column;
   gap: var(--vertical-padding);
   list-style: none;
-}
-
-.product-card {
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  justify-content: space-between;
-  gap: 1rem;
-  border-radius: 1rem;
-  padding: 1rem;
-  background-color: var(--primary);
-}
-
-.product-card-except-button {
-  display: flex;
-  gap: 1rem;
 }
 
 .product-card-image {
@@ -448,7 +532,7 @@ body {
     padding: 1rem 2rem;
     font-size: 1rem;
   }
-  
+
   .nav-link-text {
     display: inline;
     margin-left: 0.5rem;

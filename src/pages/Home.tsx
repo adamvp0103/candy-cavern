@@ -15,7 +15,7 @@ function Home({ products, handleAddToBasket }: HomeProps) {
       <Header />
       <Nav />
       <main className="main">
-        <h1>Home</h1>
+        <h1 className="page-title">Home</h1>
         <Search products={products} handleAddToBasket={handleAddToBasket} />
         <Menu products={products} handleAddToBasket={handleAddToBasket} />
       </main>

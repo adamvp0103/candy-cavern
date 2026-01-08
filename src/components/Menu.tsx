@@ -17,7 +17,7 @@ function Menu({ products, handleAddToBasket }: MenuProps) {
 
   return (
     <section className="section">
-      <h2>Menu</h2>
+      <h2 className="heading">Menu</h2>
       {categories.map((category) => (
         <section key={category}>
           <h3>{category}</h3>

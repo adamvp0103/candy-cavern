@@ -26,7 +26,7 @@ function Checkout({ basket, setBasket, products }: CheckoutProps) {
       <Header />
       <Nav />
       <main>
-        <h1>Checkout</h1>
+        <h1 className="page-title">Checkout</h1>
         {basket.length > 0 ? (
           <>
             <OrderSummary basket={basket} products={products} />
@@ -41,7 +41,7 @@ function Checkout({ basket, setBasket, products }: CheckoutProps) {
         ) : orderPlaced ? (
           <OrderConfirmation />
         ) : (
-          <span>Your basket is empty</span>
+          <span className="standalone-message">Your basket is empty</span>
         )}
       </main>
     </>
