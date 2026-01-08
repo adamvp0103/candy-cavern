@@ -2,7 +2,7 @@ import Header from "../components/Header";
 import BillingInformation from "../components/BillingInformation";
 import ShippingInformation from "../components/ShippingInformation";
 import Nav from "../components/Nav";
-import type { BasketItem, Product } from "../types/types";
+import type { BasketItem, Product } from "../types";
 import OrderSummary from "../components/OrderSummary";
 import { useState } from "react";
 import OrderConfirmation from "../components/OrderConfirmation";

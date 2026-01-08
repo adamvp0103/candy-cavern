@@ -3,8 +3,8 @@ import Home from "./pages/Home";
 import Basket from "./pages/Basket";
 import Checkout from "./pages/Checkout";
 import { useState } from "react";
-import products from "./data/products.json";
-import type { BasketItem } from "./types/types";
+import products from "./products.json";
+import type { BasketItem } from "./types";
 
 function App() {
   const [basket, setBasket] = useState<BasketItem[]>([]);

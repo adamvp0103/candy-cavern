@@ -5,113 +5,90 @@
   margin: 0;
   padding: 0;
 
-  font-family: Fredoka, sans-serif;
-  text-shadow: var(--shadow);
-  /* color: #fff; */
-
   /* outline: 1px solid red; */
 }
 
 :root {
-  /* background-color: #5f0c80; */
-
   --vertical-padding: 1rem;
   --horizontal-padding: 1rem;
   --title-font-family: "Fontdiner Swanky", fantasy;
-  --primary: #e670a9;
+  --primary: #9d2a56;
   --danger: #ce134e;
   --confirm: #12c362;
-  --shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+
+  font-family: Fredoka, sans-serif;
+  text-shadow: var(--shadow);
+  color: #fff;
 }
 
 body {
-  background: radial-gradient(
-    circle at center,
-    hsla(270, 90%, 20%),
-    hsla(270, 90%, 40%)
-  );
+  background: radial-gradient(circle at center, #000000, #550926);
+  background-color: #550926;
   background-attachment: fixed;
 }
 
 .header {
-  padding: var(--vertical-padding) var(--horizontal-padding);
+  padding: 1rem;
   background-color: var(--primary);
   box-shadow: var(--shadow);
   text-align: center;
 }
 
-.page-title {
-  font-family: var(--title-font-family);
+.header-title {
+  font-family: "Fontdiner Swanky", fantasy;
   font-weight: normal;
 }
 
-.stalactites {
-  display: flex;
-  justify-content: space-between;
-  filter: drop-shadow(var(--shadow));
-}
-
-.right-nav-button-container {
-  display: flex;
-  justify-content: flex-end;
+.nav {
   position: sticky;
   top: 0;
-  padding: var(--vertical-padding) var(--horizontal-padding);
+  background-color: #550926;
 }
 
-.left-nav-button-container {
-  display: flex;
-  position: sticky;
-  top: 0;
-  padding: var(--vertical-padding) var(--horizontal-padding);
-}
-
-.nav-button {
-  position: relative;
+.nav > ul {
+  list-style: none;
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 0.5rem;
-  border: none;
-  border-radius: 999rem; /* Arbitrarily high value for pill shape */
-  padding: 1rem;
-  background-color: var(--primary);
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-  text-decoration: none;
-  cursor: pointer;
+  max-width: 32rem;
+  margin: auto;
+  padding: 0.5rem;
 }
 
-.nav-button:hover {
-  filter: brightness(90%);
+.nav > ul > li {
+  flex: 1;
 }
 
-.basket-indicator {
-  position: absolute;
-  top: -0.5rem;
-  left: -0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2rem;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background-color: #ce134e;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-  font-size: 1rem;
+.nav-link {
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #fff;
+  transition: background-color 0.1s;
 }
 
-.nav-button-text {
+.nav-link:not(.active-nav-link):hover {
+  background-color: #79193e;
+}
+
+.active-nav-link {
+  background-color: #9d2a56;
+  cursor: default;
+}
+
+.nav-link-text {
   display: none;
-  font-size: 1rem;
-  font-weight: 500;
   text-decoration: none;
+}
+
+.main {
+  padding-inline: 1rem;
 }
 
 .section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--vertical-padding);
-  padding: var(--vertical-padding) var(--horizontal-padding);
+  max-width: 32rem;
+  margin-inline: auto;
 }
 
 .heading {
@@ -466,14 +443,15 @@ body {
   filter: brightness(90%);
 }
 
-@media (min-width: 641px) {
-  :root {
-    --vertical-padding: 2rem;
-    --horizontal-padding: 4rem;
-  }
-
-  .nav-button {
+@media (min-width: 512px) {
+  .nav-link {
     padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+  
+  .nav-link-text {
+    display: inline;
+    margin-left: 0.5rem;
   }
 
   .nav-button-text {

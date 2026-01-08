@@ -1,4 +1,4 @@
-import type { Product } from "../types/types";
+import type { Product } from "../types";
 import BrowseCard from "./BrowseCard";
 
 interface MenuProps {
@@ -16,7 +16,7 @@ function Menu({ products, handleAddToBasket }: MenuProps) {
   }
 
   return (
-    <section>
+    <section className="section">
       <h2>Menu</h2>
       {categories.map((category) => (
         <section key={category}>

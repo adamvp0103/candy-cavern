@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import Header from "../components/Header";
 import Nav from "../components/Nav";
-import type { BasketItem, Product } from "../types/types";
+import type { BasketItem, Product } from "../types";
 import BasketCard from "../components/BasketCard";
 
 interface BasketProps {

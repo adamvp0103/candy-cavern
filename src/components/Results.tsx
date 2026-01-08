@@ -1,4 +1,4 @@
-import type { Product } from "../types/types";
+import type { Product } from "../types";
 import BrowseCard from "./BrowseCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";

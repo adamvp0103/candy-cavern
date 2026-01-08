@@ -4,28 +4,55 @@ import {
   faHouse,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 
 function Nav() {
+  const location = useLocation();
+
+  const onHomePage = location.pathname === "/";
+  const onBasketPage = location.pathname === "/basket";
+  const onCheckoutPage = location.pathname === "/checkout";
+
   return (
-    <nav>
+    <nav className="nav">
       <ul>
         <li>
-          <Link to="/">
-            <FontAwesomeIcon icon={faHouse} />
-            <span>Home</span>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <div
+              className={`nav-link${onHomePage ? " active-nav-link" : ""}`}
+              aria-label="Home"
+            >
+              <FontAwesomeIcon icon={faHouse} aria-hidden="true" />
+              <span className="nav-link-text" aria-hidden="true">
+                Home
+              </span>
+            </div>
           </Link>
         </li>
         <li>
-          <Link to="/basket">
-            <FontAwesomeIcon icon={faBasketShopping} />
-            <span>Basket</span>
+          <Link to="/basket" style={{ textDecoration: "none" }}>
+            <div
+              className={`nav-link${onBasketPage ? " active-nav-link" : ""}`}
+              aria-label="Basket"
+            >
+              <FontAwesomeIcon icon={faBasketShopping} aria-hidden="true" />
+              <span className="nav-link-text" aria-hidden="true">
+                Basket
+              </span>
+            </div>
           </Link>
         </li>
         <li>
-          <Link to="/checkout">
-            <FontAwesomeIcon icon={faCashRegister} />
-            <span>Checkout</span>
+          <Link to="/checkout" style={{ textDecoration: "none" }}>
+            <div
+              className={`nav-link${onCheckoutPage ? " active-nav-link" : ""}`}
+              aria-label="Checkout"
+            >
+              <FontAwesomeIcon icon={faCashRegister} aria-hidden="true" />
+              <span className="nav-link-text" aria-hidden="true">
+                Checkout
+              </span>
+            </div>
           </Link>
         </li>
       </ul>

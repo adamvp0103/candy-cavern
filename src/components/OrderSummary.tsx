@@ -1,4 +1,4 @@
-import type { BasketItem, Product } from "../types/types";
+import type { BasketItem, Product } from "../types";
 
 interface OrderSummaryProps {
   basket: BasketItem[];

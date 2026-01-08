@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { Product } from "../types/types";
+import type { Product } from "../types";
 import { faMinus, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 interface BasketCardProps {

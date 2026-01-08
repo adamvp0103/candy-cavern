@@ -1,4 +1,4 @@
-import type { Product } from "../types/types";
+import type { Product } from "../types";
 
 // Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

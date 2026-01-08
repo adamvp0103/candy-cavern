@@ -1,5 +1,5 @@
 import { useState, type ChangeEvent } from "react";
-import type { Product } from "../types/types";
+import type { Product } from "../types";
 import Results from "./Results";
 
 interface SearchProps {
@@ -27,7 +27,7 @@ function Search({ products, handleAddToBasket }: SearchProps) {
   }
 
   return (
-    <section>
+    <section className="section">
       <h2>Search</h2>
       <search>
         <input
