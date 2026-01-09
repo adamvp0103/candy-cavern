@@ -16,7 +16,13 @@ function App() {
       // Not in basket yet, add new item with quantity 1
       setBasket([...basket, { name, quantity: 1 }]);
     } else {
-      // Already in basket, increment quantity
+      // Already in basket, check quantity
+      if (basket[index].quantity === 10) {
+        // Quantity limit of 10 reached, skip
+        return;
+      }
+
+      // Okay to increment quantity
       setBasket(
         basket.map((item) =>
           item.name === name ? { ...item, quantity: item.quantity + 1 } : item

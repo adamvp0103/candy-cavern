@@ -7,7 +7,7 @@ function BillingInformation() {
   const [fullName, setFullName] = useState("");
 
   return (
-    <fieldset className="section">
+    <fieldset className="narrow-section">
       <legend className="heading">Billing Information</legend>
       <div className="input-field">
         <label className="input-label" htmlFor="card-number-input">

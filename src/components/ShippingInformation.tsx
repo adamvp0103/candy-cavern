@@ -11,7 +11,7 @@ function ShippingInformation() {
   const [instructions, setInstructions] = useState("");
 
   return (
-    <fieldset className="section">
+    <fieldset className="narrow-section">
       <legend className="heading">Shipping Information</legend>
       <div className="input-field">
         <label className="input-label" htmlFor="email-input">

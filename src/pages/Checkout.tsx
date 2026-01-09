@@ -6,6 +6,8 @@ import type { BasketItem, Product } from "../types";
 import OrderSummary from "../components/OrderSummary";
 import { useState } from "react";
 import OrderConfirmation from "../components/OrderConfirmation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 interface CheckoutProps {
   basket: BasketItem[];
@@ -25,23 +27,30 @@ function Checkout({ basket, setBasket, products }: CheckoutProps) {
     <>
       <Header />
       <Nav />
-      <main>
-        <h1 className="page-title">Checkout</h1>
+      <main className="main">
+        <h1 className="narrow-page-title">Checkout</h1>
         {basket.length > 0 ? (
           <>
             <OrderSummary basket={basket} products={products} />
-            <section>
-              <form onSubmit={handleSubmit}>
+            <section className="narrow-section">
+              <form className="form" onSubmit={handleSubmit}>
                 <BillingInformation />
                 <ShippingInformation />
-                <button className="place-order-button">Place Order</button>
+                <div className="standalone-button-container">
+                  <button className="standalone-button">
+                    <FontAwesomeIcon icon={faCheck} />
+                    <span className="standalone-button-text">Place Order</span>
+                  </button>
+                </div>
               </form>
             </section>
           </>
         ) : orderPlaced ? (
           <OrderConfirmation />
         ) : (
-          <span className="standalone-message">Your basket is empty</span>
+          <section className="narrow-section">
+            <span className="standalone-message">Your basket is empty</span>
+          </section>
         )}
       </main>
     </>
