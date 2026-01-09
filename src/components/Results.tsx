@@ -3,6 +3,7 @@ import BrowseCard from "./BrowseCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import ResultNav from "./ResultNav";
 
 interface ResultsProps {
   results: Product[];
@@ -31,29 +32,17 @@ function Results({ results, handleAddToBasket }: ResultsProps) {
         {results.length} result{results.length > 1 && "s"}
       </span>
 
-      {/* Result navigation */}
+      {/* Result navigation (top) */}
       {results.length > resultsPerPage && (
-        <div className="result-nav">
-          <button
-            className="result-nav-button"
-            onClick={() => setPage(page === 0 ? numberOfPages - 1 : page - 1)}
-          >
-            <FontAwesomeIcon icon={faAngleLeft} />
-          </button>
-          <span className="result-nav-text">
-            Page {page + 1} of {numberOfPages}
-          </span>
-          <button
-            className="result-nav-button"
-            onClick={() => setPage(page === numberOfPages - 1 ? 0 : page + 1)}
-          >
-            <FontAwesomeIcon icon={faAngleRight} />
-          </button>
-        </div>
+        <ResultNav
+          page={page}
+          setPage={setPage}
+          numberOfPages={numberOfPages}
+        />
       )}
 
       {/* Result list */}
-      <ul className="results">
+      <ul className="browse-card-list">
         {results
           .slice(page * resultsPerPage, page * resultsPerPage + resultsPerPage)
           .map((result) => (
@@ -63,6 +52,15 @@ function Results({ results, handleAddToBasket }: ResultsProps) {
             />
           ))}
       </ul>
+
+      {/* Result navigation (bottom) */}
+      {results.length > resultsPerPage && (
+        <ResultNav
+          page={page}
+          setPage={setPage}
+          numberOfPages={numberOfPages}
+        />
+      )}
     </>
   );
 }

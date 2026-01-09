@@ -20,8 +20,8 @@ function Menu({ products, handleAddToBasket }: MenuProps) {
       <h2 className="heading">Menu</h2>
       {categories.map((category) => (
         <section key={category}>
-          <h3>{category}</h3>
-          <ul>
+          <h3 className="subheading">{category}</h3>
+          <ul className="browse-card-list">
             {products
               .filter((product) => product.category === category)
               .map((product) => (

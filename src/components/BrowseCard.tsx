@@ -17,10 +17,12 @@ function BrowseCard({ product, handleAddToBasket }: BrowseCardProps) {
         src={`/images/${product.image}`}
         alt={product.name}
       />
-      <div>
-        <h3>{product.name}</h3>
-        <span>${product.price.toFixed(2)}</span>
-        <p className="browse-card-description">{product.description}</p>
+      <div className="browse-card-body">
+        <div className="browse-card-info">
+          <h3>{product.name}</h3>
+          <span>${product.price.toFixed(2)}</span>
+          <p className="browse-card-description">{product.description}</p>
+        </div>
         <button
           className="browse-card-button"
           onClick={() => handleAddToBasket(product.name)}

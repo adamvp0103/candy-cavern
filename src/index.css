@@ -50,7 +50,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 0.5rem;
-  max-width: 32rem;
+  max-width: 386px;
   margin: auto;
   padding: 0.5rem;
 }
@@ -84,24 +84,27 @@ body {
 
 .main {
   padding-inline: 1rem;
+  padding-bottom: 1rem;
 }
 
 .page-title {
-  max-width: 32rem;
-  margin-top: 1rem;
+  max-width: 386px;
+  margin-top: 2rem;
   margin-inline: auto;
   font-family: "Fontdiner Swanky", fantasy;
+  font-size: 2.5rem;
   font-weight: normal;
 }
 
 .section {
-  max-width: 32rem;
+  max-width: 386px;
   margin-inline: auto;
 }
 
 .heading {
-  margin-top: 1rem;
+  margin-top: 2rem;
   font-family: Fredoka, sans-serif;
+  font-size: 2rem;
   font-weight: bold;
 }
 
@@ -119,7 +122,7 @@ body {
 
 .standalone-message {
   display: block;
-  margin-block: 1rem;
+  margin-top: 1rem;
   text-align: center;
 }
 
@@ -128,6 +131,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  margin-top: 1rem;
 }
 
 .result-nav-button {
@@ -150,17 +154,22 @@ body {
   text-align: center;
 }
 
-.results {
+.browse-card-list {
   list-style: none;
+  display: grid;
+  grid-auto-rows: 1fr;
+  row-gap: 1rem;
+  grid-template-columns: 1fr;
+  margin-top: 1rem;
 }
 
 .browse-card {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
+  height: 100%;
   border-radius: 1rem;
   padding: 1rem;
-  margin-top: 1rem;
   background-color: #9d2a56;
 }
 
@@ -171,12 +180,23 @@ body {
   border-radius: 1rem;
 }
 
+.browse-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-self: stretch;
+}
+
+.browse-card-info {
+  flex: 1;
+}
+
 .browse-card-description {
   margin-top: 1rem;
 }
 
 .browse-card-button {
-  width: 100%;
+  align-self: flex-end;
   margin-top: 1rem;
   border: none;
   border-radius: 1rem;
@@ -193,98 +213,14 @@ body {
 }
 
 .browse-card-button-text {
-  margin-left: 0.1rem;
+  margin-left: 0.5rem;
 }
 
-.product-card-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--vertical-padding);
-  list-style: none;
-}
-
-.product-card-image {
-  width: 6rem;
-  height: 6rem;
-  object-fit: cover;
-  border: 1px solid #fff;
-  border-radius: 0.5rem;
-  box-shadow: var(--shadow);
-}
-
-.product-card-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  flex: 1;
-}
-
-.product-card-title-and-price {
-  display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
-}
-
-.price {
-  font-weight: lighter;
-}
-
-.product-card-button {
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  background-color: #fff;
-  box-shadow: var(--shadow);
-  font-size: 1rem;
-  font-weight: 500;
-  text-shadow: none;
-  color: #000;
-  cursor: pointer;
-}
-
-.product-card-button:hover {
-  filter: brightness(90%);
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.overlay-content {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  border-radius: 1rem;
-  padding: 2rem;
-  background-color: var(--primary);
-}
-
-.close-overlay-button {
-  position: absolute;
-  top: -1rem;
-  left: -1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  border-radius: 50%;
-  padding: 1rem;
-  background-color: var(--danger);
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-}
-
-.close-overlay-button:hover {
-  filter: brightness(90%);
+.subheading {
+  margin-top: 2rem;
+  font-family: "Fontdiner Swanky", fantasy;
+  font-size: 1.5rem;
+  font-weight: normal;
 }
 
 .basket-card-list {
@@ -527,7 +463,11 @@ body {
   filter: brightness(90%);
 }
 
-@media (min-width: 512px) {
+@media (min-width: 804px) {
+  .nav > ul {
+    max-width: 772px;
+  }
+
   .nav-link {
     padding: 1rem 2rem;
     font-size: 1rem;
@@ -542,9 +482,17 @@ body {
     display: inline;
   }
 
-  .product-card-list {
-    display: grid;
+  .page-title {
+    max-width: 772px;
+  }
+
+  .section {
+    max-width: 772px;
+  }
+
+  .browse-card-list {
     grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
   }
 
   .form {
@@ -553,14 +501,21 @@ body {
   }
 }
 
-@media (min-width: 1008px) {
-  :root {
-    --horizontal-padding: 16rem;
+@media (min-width: 1198px) {
+  .nav > ul {
+    max-width: 1166px;
   }
 
-  .product-card-image {
-    width: 8rem;
-    height: 8rem;
+  .page-title {
+    max-width: 1166px;
+  }
+
+  .section {
+    max-width: 1166px;
+  }
+
+  .browse-card-list {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   .basket-card-image {
