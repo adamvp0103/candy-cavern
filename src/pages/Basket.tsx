@@ -3,6 +3,8 @@ import Header from "../components/Header";
 import Nav from "../components/Nav";
 import type { BasketItem, Product } from "../types";
 import BasketCard from "../components/BasketCard";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCashRegister } from "@fortawesome/free-solid-svg-icons";
 
 interface BasketProps {
   basket: BasketItem[];
@@ -44,46 +46,43 @@ function Basket({
     <>
       <Header />
       <Nav />
-      <main>
+      <main className="main">
         <h1 className="page-title">Basket</h1>
 
-        {/* List of basket items */}
-        {basket.length > 0 ? (
-          <ul className="basket-card-list">
-            {basket.map((item) => (
-              <li key={item.name}>
-                <BasketCard
-                  product={products.find(
-                    (product) => product.name === item.name
-                  )}
-                  quantity={item.quantity}
-                  addOne={() => handleAddToBasket(item.name)}
-                  removeOne={() => removeOne(item.name)}
-                  removeAll={() => removeAll(item.name)}
-                />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <span className="standalone-message">Your basket is empty</span>
-        )}
+        <section className="section">
+          {/* List of basket items */}
+          {basket.length > 0 ? (
+            <ul className="basket-card-list">
+              {basket.map((item) => (
+                <li key={item.name}>
+                  <BasketCard
+                    product={products.find(
+                      (product) => product.name === item.name
+                    )}
+                    quantity={item.quantity}
+                    addOne={() => handleAddToBasket(item.name)}
+                    removeOne={() => removeOne(item.name)}
+                    removeAll={() => removeAll(item.name)}
+                  />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <span className="standalone-message">Your basket is empty</span>
+          )}
 
-        {/* Basket buttons */}
-        {basket.length > 0 && (
-          <div className="basket-buttons">
-            <button
-              className="clear-basket-button"
-              onClick={() => setBasket([])}
-            >
-              Clear Basket
-            </button>
-            <button className="check-out-button">
+          {/* Basket buttons */}
+          {basket.length > 0 && (
+            <div className="standalone-button-container">
               <Link to="/checkout" style={{ textDecoration: "none" }}>
-                <div className="check-out-button-text">Check Out</div>
+                <button className="standalone-button">
+                  <FontAwesomeIcon icon={faCashRegister} />
+                  <span className="standalone-button-text">Check Out</span>
+                </button>
               </Link>
-            </button>
-          </div>
-        )}
+            </div>
+          )}
+        </section>
       </main>
     </>
   );

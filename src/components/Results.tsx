@@ -1,7 +1,5 @@
 import type { Product } from "../types";
 import BrowseCard from "./BrowseCard";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import ResultNav from "./ResultNav";
 

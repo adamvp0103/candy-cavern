@@ -13,7 +13,7 @@ function BrowseCard({ product, handleAddToBasket }: BrowseCardProps) {
   return (
     <li className="browse-card" key={product.name}>
       <img
-        className="browse-card-image"
+        className="card-image"
         src={`/images/${product.image}`}
         alt={product.name}
       />

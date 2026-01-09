@@ -29,17 +29,17 @@ function BasketCard({
   return (
     <li className="basket-card" key={product.name}>
       <img
-        className="basket-card-image"
+        className="card-image"
         src={`/images/${product.image}`}
         alt={product.name}
       />
-      <div className="basket-card-except-image">
-        <div className="basket-card-title-and-price">
+      <div className="basket-card-body">
+        <div>
           <h3>{product.name}</h3>
-          <span className="price">${product.price.toFixed(2)}</span>
+          <span>${product.price.toFixed(2)}</span>
         </div>
-        <div className="basket-card-quantity-and-remove">
-          <div className="basket-card-quantity">
+        <div className="basket-card-buttons">
+          <div className="quantity-buttons">
             <button
               className="quantity-button"
               onClick={() => removeOne(product.name)}
@@ -57,7 +57,7 @@ function BasketCard({
             </button>
           </div>
           <button
-            className="remove-button"
+            className="basket-remove-button"
             onClick={() => removeAll(product.name)}
           >
             <FontAwesomeIcon icon={faTrash} />
