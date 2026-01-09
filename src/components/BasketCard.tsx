@@ -21,7 +21,7 @@ function BasketCard({
     console.error(
       "'product' provided as prop to 'BasketCard' instance was not defined."
     );
-    return <li>Product not found</li>;
+    return <li className="basket-card">Product not found</li>;
   }
 
   const quantityLimit = 10;
@@ -42,6 +42,7 @@ function BasketCard({
           <div className="quantity-buttons">
             <button
               className="quantity-button"
+              tabIndex={quantity === 1 ? -1 : 0}
               onClick={() => removeOne(product.name)}
               disabled={quantity === 1}
             >
@@ -50,6 +51,7 @@ function BasketCard({
             <span className="basket-quantity">{quantity}</span>
             <button
               className="quantity-button"
+              tabIndex={quantity === quantityLimit ? -1 : 0}
               onClick={() => addOne(product)}
               disabled={quantity === quantityLimit}
             >
@@ -58,6 +60,7 @@ function BasketCard({
           </div>
           <button
             className="basket-remove-button"
+            tabIndex={0}
             onClick={() => removeAll(product.name)}
           >
             <FontAwesomeIcon icon={faTrash} />

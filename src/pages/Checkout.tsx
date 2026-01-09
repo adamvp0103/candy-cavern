@@ -37,7 +37,7 @@ function Checkout({ basket, setBasket, products }: CheckoutProps) {
                 <BillingInformation />
                 <ShippingInformation />
                 <div className="standalone-button-container">
-                  <button className="standalone-button">
+                  <button className="standalone-button" tabIndex={0}>
                     <FontAwesomeIcon icon={faCheck} />
                     <span className="standalone-button-text">Place Order</span>
                   </button>

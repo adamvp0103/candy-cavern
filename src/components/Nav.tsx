@@ -17,7 +17,11 @@ function Nav() {
     <nav className="nav">
       <ul>
         <li>
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link
+            to="/"
+            style={{ textDecoration: "none" }}
+            tabIndex={onHomePage ? -1 : 0}
+          >
             <div
               className={`nav-link${onHomePage ? " active-nav-link" : ""}`}
               aria-label="Home"
@@ -30,7 +34,11 @@ function Nav() {
           </Link>
         </li>
         <li>
-          <Link to="/basket" style={{ textDecoration: "none" }}>
+          <Link
+            to="/basket"
+            style={{ textDecoration: "none" }}
+            tabIndex={onBasketPage ? -1 : 0}
+          >
             <div
               className={`nav-link${onBasketPage ? " active-nav-link" : ""}`}
               aria-label="Basket"
@@ -43,7 +51,11 @@ function Nav() {
           </Link>
         </li>
         <li>
-          <Link to="/checkout" style={{ textDecoration: "none" }}>
+          <Link
+            to="/checkout"
+            style={{ textDecoration: "none" }}
+            tabIndex={onCheckoutPage ? -1 : 0}
+          >
             <div
               className={`nav-link${onCheckoutPage ? " active-nav-link" : ""}`}
               aria-label="Checkout"

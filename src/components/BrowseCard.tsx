@@ -25,6 +25,7 @@ function BrowseCard({ product, handleAddToBasket }: BrowseCardProps) {
         </div>
         <button
           className="browse-card-button"
+          tabIndex={0}
           onClick={() => handleAddToBasket(product.name)}
         >
           <FontAwesomeIcon icon={faPlus} />

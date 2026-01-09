@@ -9,13 +9,6 @@
 }
 
 :root {
-  --vertical-padding: 1rem;
-  --horizontal-padding: 1rem;
-  --title-font-family: "Fontdiner Swanky", fantasy;
-  --primary: #9d2a56;
-  --danger: #ce134e;
-  --confirm: #12c362;
-
   font-family: Fredoka, sans-serif;
   text-shadow: var(--shadow);
   color: #fff;
@@ -29,8 +22,7 @@ body {
 
 .header {
   padding: 1rem;
-  background-color: var(--primary);
-  box-shadow: var(--shadow);
+  background-color: #9d2a56;
   text-align: center;
 }
 
@@ -68,7 +60,8 @@ body {
   transition: background-color 0.1s;
 }
 
-.nav-link:not(.active-nav-link):hover {
+.nav-link:not(.active-nav-link):hover,
+.nav-link:focus {
   background-color: #79193e;
 }
 
@@ -217,7 +210,8 @@ body {
   transition: background-color 0.1s;
 }
 
-.browse-card-button:hover {
+.browse-card-button:hover,
+.browse-card-button:focus {
   background-color: #e691b2;
 }
 
@@ -279,7 +273,8 @@ body {
   transition: background-color 0.1s;
 }
 
-.quantity-button:not(:disabled):hover {
+.quantity-button:not(:disabled):hover,
+.quantity-button:focus {
   background-color: #e691b2;
   cursor: pointer;
 }
@@ -306,7 +301,8 @@ body {
   transition: background-color 0.1s;
 }
 
-.basket-remove-button:hover {
+.basket-remove-button:hover,
+.basket-remove-button:focus {
   background-color: #c83956;
   cursor: pointer;
 }
@@ -327,7 +323,8 @@ body {
   transition: background-color 0.1s;
 }
 
-.standalone-button:hover {
+.standalone-button:hover,
+.standalone-button:focus {
   background-color: #e691b2;
   cursor: pointer;
 }
@@ -393,36 +390,6 @@ body {
   color: #000;
 }
 
-.optional {
-  font-weight: lighter;
-}
-
-.invalid-input-message {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.place-order-button-container {
-  padding: var(--vertical-padding) var(--horizontal-padding);
-}
-
-.place-order-button {
-  width: 100%;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  background-color: var(--confirm);
-  box-shadow: var(--shadow);
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.place-order-button:hover {
-  filter: brightness(90%);
-}
-
 @media (min-width: 804px) {
   .nav > ul {
     max-width: 772px;
@@ -444,6 +411,10 @@ body {
 
   .page-title {
     max-width: 772px;
+  }
+
+  .basket-card {
+    height: 100%;
   }
 
   .narrow-page-title {

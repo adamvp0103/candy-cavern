@@ -14,7 +14,9 @@ function OrderConfirmation() {
         <Link to="/">
           <button className="standalone-button">
             <FontAwesomeIcon icon={faHouse} />
-            <span className="standalone-button-text">Return to Home Page</span>
+            <span className="standalone-button-text" tabIndex={0}>
+              Return to Home Page
+            </span>
           </button>
         </Link>
       </div>

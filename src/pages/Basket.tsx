@@ -75,7 +75,7 @@ function Basket({
           {basket.length > 0 && (
             <div className="standalone-button-container">
               <Link to="/checkout" style={{ textDecoration: "none" }}>
-                <button className="standalone-button">
+                <button className="standalone-button" tabIndex={0}>
                   <FontAwesomeIcon icon={faCashRegister} />
                   <span className="standalone-button-text">Check Out</span>
                 </button>
