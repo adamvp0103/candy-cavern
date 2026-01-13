@@ -1,0 +1,85 @@
+.card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  background-color: #9d2a56;
+}
+
+.image {
+  width: 6rem;
+  aspect-ratio: 1;
+  border: 0.1rem solid #e691b2;
+  border-radius: 1rem;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  align-self: stretch;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.quantityButtons {
+  display: flex;
+  align-items: center;
+}
+
+.quantityButton {
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 50%;
+  padding: 0.5rem;
+  background-color: #fff;
+  font-size: 1rem;
+  transition: background-color 0.1s;
+}
+
+.quantityButton:not(:disabled):hover,
+.quantityButton:focus {
+  background-color: #e691b2;
+  cursor: pointer;
+}
+
+.quantityButton:disabled {
+  opacity: 25%;
+  cursor: not-allowed;
+}
+
+.quantity {
+  width: 2rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.removeButton {
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 50%;
+  padding: 0.5rem;
+  background-color: #f44848;
+  font-size: 1rem;
+  color: #fff;
+  transition: background-color 0.1s;
+}
+
+.removeButton:hover,
+.removeButton:focus {
+  background-color: #c83956;
+  cursor: pointer;
+}
+
+@media (min-width: 804px) {
+  .card {
+    height: 100%;
+  }
+}

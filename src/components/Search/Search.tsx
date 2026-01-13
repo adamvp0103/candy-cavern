@@ -1,6 +1,7 @@
 import { useState, type ChangeEvent } from "react";
-import type { Product } from "../types";
-import Results from "./Results";
+import type { Product } from "../../types";
+import Results from "../Results";
+import styles from "./Search.module.css";
 
 interface SearchProps {
   products: Product[];
@@ -31,7 +32,7 @@ function Search({ products, handleAddToBasket }: SearchProps) {
       <h2 className="heading">Search</h2>
       <search>
         <input
-          className="search-bar"
+          className={styles.input}
           type="search"
           value={query}
           placeholder="Enter product name..."

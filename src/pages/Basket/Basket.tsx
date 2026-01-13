@@ -1,10 +1,11 @@
 import { Link } from "react-router";
-import Header from "../components/Header";
-import Nav from "../components/Nav";
-import type { BasketItem, Product } from "../types";
-import BasketCard from "../components/BasketCard";
+import Header from "../../components/Header/Header";
+import Nav from "../../components/Nav/Nav";
+import type { BasketItem, Product } from "../../types";
+import BasketCard from "../../components/BasketCard/BasketCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCashRegister } from "@fortawesome/free-solid-svg-icons";
+import styles from "./Basket.module.css";
 
 interface BasketProps {
   basket: BasketItem[];
@@ -52,7 +53,7 @@ function Basket({
         <section className="section">
           {/* List of basket items */}
           {basket.length > 0 ? (
-            <ul className="basket-card-list">
+            <ul className={styles.list}>
               {basket.map((item) => (
                 <li key={item.name}>
                   <BasketCard

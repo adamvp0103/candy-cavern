@@ -1,7 +1,7 @@
 import type { Product } from "../types";
-import BrowseCard from "./BrowseCard";
+import BrowseCard from "./BrowseCard/BrowseCard";
 import { useState } from "react";
-import ResultNav from "./ResultNav";
+import ResultNav from "./ResultNav/ResultNav";
 
 interface ResultsProps {
   results: Product[];
@@ -10,7 +10,7 @@ interface ResultsProps {
 
 function Results({ results, handleAddToBasket }: ResultsProps) {
   if (results.length === 0) {
-    return <span className="standalone-message">No results</span>;
+    return <p className="standalone-message">No results</p>;
   }
 
   const [page, setPage] = useState(0);

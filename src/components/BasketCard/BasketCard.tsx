@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { Product } from "../types";
+import type { Product } from "../../types";
 import { faMinus, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
+import styles from "./BasketCard.module.css";
 
 interface BasketCardProps {
   product: Product | undefined;
@@ -21,36 +22,36 @@ function BasketCard({
     console.error(
       "'product' provided as prop to 'BasketCard' instance was not defined."
     );
-    return <li className="basket-card">Product not found</li>;
+    return <li className={styles.card}>Product not found</li>;
   }
 
   const quantityLimit = 10;
 
   return (
-    <li className="basket-card" key={product.name}>
+    <li className={styles.card} key={product.name}>
       <img
-        className="card-image"
+        className={styles.image}
         src={`/images/${product.image}`}
         alt={product.name}
       />
-      <div className="basket-card-body">
+      <div className={styles.body}>
         <div>
           <h3>{product.name}</h3>
-          <span>${product.price.toFixed(2)}</span>
+          <p>${product.price.toFixed(2)}</p>
         </div>
-        <div className="basket-card-buttons">
-          <div className="quantity-buttons">
+        <div className={styles.buttons}>
+          <div className={styles.quantityButtons}>
             <button
-              className="quantity-button"
+              className={styles.quantityButton}
               tabIndex={quantity === 1 ? -1 : 0}
               onClick={() => removeOne(product.name)}
               disabled={quantity === 1}
             >
               <FontAwesomeIcon icon={faMinus} />
             </button>
-            <span className="basket-quantity">{quantity}</span>
+            <span className={styles.quantity}>{quantity}</span>
             <button
-              className="quantity-button"
+              className={styles.quantityButton}
               tabIndex={quantity === quantityLimit ? -1 : 0}
               onClick={() => addOne(product)}
               disabled={quantity === quantityLimit}
@@ -59,7 +60,7 @@ function BasketCard({
             </button>
           </div>
           <button
-            className="basket-remove-button"
+            className={styles.removeButton}
             tabIndex={0}
             onClick={() => removeAll(product.name)}
           >

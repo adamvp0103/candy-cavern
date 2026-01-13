@@ -1,0 +1,27 @@
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.button {
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  background-color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+
+.button:hover {
+  background-color: #e691b2;
+}
+
+.text {
+  width: 8rem;
+  text-align: center;
+}

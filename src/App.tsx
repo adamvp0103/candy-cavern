@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import Home from "./pages/Home";
-import Basket from "./pages/Basket";
+import Basket from "./pages/Basket/Basket";
 import Checkout from "./pages/Checkout";
 import { useState } from "react";
 import products from "./products.json";

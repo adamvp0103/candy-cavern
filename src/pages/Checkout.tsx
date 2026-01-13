@@ -1,9 +1,9 @@
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import BillingInformation from "../components/BillingInformation";
 import ShippingInformation from "../components/ShippingInformation";
-import Nav from "../components/Nav";
+import Nav from "../components/Nav/Nav";
 import type { BasketItem, Product } from "../types";
-import OrderSummary from "../components/OrderSummary";
+import OrderSummary from "../components/OrderSummary/OrderSummary";
 import { useState } from "react";
 import OrderConfirmation from "../components/OrderConfirmation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

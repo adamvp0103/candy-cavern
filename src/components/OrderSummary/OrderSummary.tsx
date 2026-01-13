@@ -1,4 +1,5 @@
-import type { BasketItem, Product } from "../types";
+import type { BasketItem, Product } from "../../types";
+import styles from "./OrderSummary.module.css";
 
 interface OrderSummaryProps {
   basket: BasketItem[];
@@ -25,7 +26,7 @@ function OrderSummary({ basket, products }: OrderSummaryProps) {
   return (
     <section className="narrow-section">
       <h2 className="heading">Order Summary</h2>
-      <table className="order-summary">
+      <table className={styles.summary}>
         {basket.map((item) => {
           const product = products.find((p) => p.name === item.name);
 
@@ -35,36 +36,36 @@ function OrderSummary({ basket, products }: OrderSummaryProps) {
           }
 
           return (
-            <tr className="order-list-item" key={item.name}>
-              <th className="table-header">{item.name}</th>
-              <td className="table-quantity">x{item.quantity}</td>
-              <td className="table-price">
+            <tr key={item.name}>
+              <th className={styles.header}>{item.name}</th>
+              <td>x{item.quantity}</td>
+              <td className={styles.price}>
                 ${(product.price * item.quantity).toFixed(2)}
               </td>
             </tr>
           );
         })}
         <tr>
-          <th className="table-header">Subtotal</th>
-          <td className="table-price" colSpan={2}>
+          <th className={styles.header}>Subtotal</th>
+          <td className={styles.price} colSpan={2}>
             ${subtotal.toFixed(2)}
           </td>
         </tr>
         <tr>
-          <th className="table-header">Shipping</th>
-          <td className="table-price" colSpan={2}>
+          <th className={styles.header}>Shipping</th>
+          <td className={styles.price} colSpan={2}>
             ${shippingFee.toFixed(2)}
           </td>
         </tr>
         <tr>
-          <th className="table-header">Tax</th>
-          <td className="table-price" colSpan={2}>
+          <th className={styles.header}>Tax</th>
+          <td className={styles.price} colSpan={2}>
             ${tax.toFixed(2)}
           </td>
         </tr>
         <tr>
-          <th className="table-header">Total</th>
-          <td className="table-total" colSpan={2}>
+          <th className={styles.header}>Total</th>
+          <td className={styles.total} colSpan={2}>
             ${(subtotal + shippingFee + tax).toFixed(2)}
           </td>
         </tr>

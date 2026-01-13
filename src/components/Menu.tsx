@@ -1,5 +1,5 @@
 import type { Product } from "../types";
-import BrowseCard from "./BrowseCard";
+import BrowseCard from "./BrowseCard/BrowseCard";
 
 interface MenuProps {
   products: Product[];
