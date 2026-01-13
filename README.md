@@ -1,28 +1,54 @@
 # Candy Cavern
 
-Candy Cavern is a fake, online candy store to demonstrate my abilities in front-end web development.
+An online candy store UI with a searchable menu, basket, and checkout flow.
 
-## Features
+## Installation
 
-- **Product browsing:** Products lists are separated by category and each product includes an image, name, price, description, and a button to add it to your basket.
-- **Adding to and viewing basket:** When a product's "Add to Basket" button is clicked, it is added to a site-wide basket. If another of the same product has already been added, the count will simply increment. The basket be viewed via the button at the top right of the home/products page.
-- **Manipulating basket:** On the basket page, all added products can be viewed. Their quantities can be adjusted by the plus and minus buttons (up to ten each), or all instances of the product can be removed by the red trash button. The price on each product card in the basket reflects the price of one, not the total for the quantity selected. The entire basket can be emptied via the "Clear Basket" button near the bottom of the screen.
-- **Order summary:** On the checkout page, a summary of the cost of all the items in the basket plus shipping and tax can be seen, with the grand total emphasized in larger text near the bottom.
-- **Helpful checkout forms:** Messages indicate and errors in the form before submission.
-- **Order confirmation:** Upon placing the order, you will be automatically taken back to the product page with a modal message indicating that the order was successful. The basket will also be cleared automatically.
+1. Fork [the repository on GitHub](https://github.com/adamvp0103/candy-cavern).
+2. Clone the fork onto your file system:
 
-## Site Layout
+```zsh
+git clone <your-fork-url>
+```
 
-- **Home/product page**
-  - List of products (separated by category)
-- **Basket page**
-  - List of products in basket (same products are grouped into one card)
-- **Checkout page**
-  - Order summary
-  - Billing information form
-  - Shipping information form
+3. Install the project's dependencies:
 
-## Future Ideas
+```zsh
+npm install
+```
 
-- **Basket indicator:** A count for the number of products in the basket, viewable from the product page. Alternatively, some type of user feedback to indicate that the product was added after pressing the "Add to Basket" button.
-- **Shipping same as billing:** A common feature in online checkout scenarios where a checkbox can be checked to automatically populate the shipping fields with the billing field information or vice versa.
+4. Start the local development server:
+
+```zsh
+npm run dev
+```
+
+## Usage
+
+1. Open [the project](https://candy-cavern.netlify.app).
+2. Use the search bar or scroll to browse products.
+3. Press the "Add to Basket" button on the desired product's card to add it to your basket.
+4. Use the navigation bar near the top of the screen to visit different pages.
+5. On the Basket page, use the buttons on the desired product's card (if present) to adjust the quantity or remove the product from the basket.
+6. On the Checkout page, enter billing and shipping information into the form, and press the "Place Order" button to simulate placing the order.
+
+## Contributing
+
+This project may be forked for analysis or practice, but pull requests will not be accepted because this is a personal portfolio project.
+
+## License
+
+Copyright 2026 Adam Parks
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+## Contact
+
+- **Website:** https://adam-parks-portfolio.netlify.app
+- **Email:** adamvp0103@gmail.com
+- **LinkedIn:** https://www.linkedin.com/in/adam-parks-6825ab2bb/
+- **GitHub:** https://github.com/adamvp0103/
