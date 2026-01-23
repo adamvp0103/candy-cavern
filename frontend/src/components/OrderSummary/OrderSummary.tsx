@@ -1,20 +1,19 @@
-import type { BasketItem, Product } from "../../types";
+import { useBasket } from "../../context/BasketProvider";
+import { useProducts } from "../../context/ProductProvider";
 import styles from "./OrderSummary.module.css";
 
-interface OrderSummaryProps {
-  basket: BasketItem[];
-  products: Product[];
-}
+function OrderSummary() {
+  const { basket } = useBasket();
+  const { products } = useProducts();
 
-function OrderSummary({ basket, products }: OrderSummaryProps) {
   const shippingFee = 6;
   const taxRate = 0.08;
 
   const subtotal = basket.reduce((previous, current) => {
-    const product = products.find((p) => p.name === current.name);
+    const product = products.find((p) => p._id === current.id);
 
     if (!product) {
-      console.error(`Basket item '${current.name}' not found in products.`);
+      console.error(`Product with ID "${current.id}" not found.`);
       return 0;
     }
 
@@ -27,48 +26,48 @@ function OrderSummary({ basket, products }: OrderSummaryProps) {
     <section className="narrow-section">
       <h2 className="heading">Order Summary</h2>
       <table className={styles.summary}>
-        {basket.map((item) => {
-          const product = products.find((p) => p.name === item.name);
-
-          if (!product) {
-            console.error(`Basket item '${item.name}' not found in products.`);
-            return <tr>Product not found</tr>;
-          }
-
-          return (
-            <tr key={item.name}>
-              <th className={styles.header}>{item.name}</th>
-              <td>x{item.quantity}</td>
-              <td className={styles.price}>
-                ${(product.price * item.quantity).toFixed(2)}
-              </td>
-            </tr>
-          );
-        })}
-        <tr>
-          <th className={styles.header}>Subtotal</th>
-          <td className={styles.price} colSpan={2}>
-            ${subtotal.toFixed(2)}
-          </td>
-        </tr>
-        <tr>
-          <th className={styles.header}>Shipping</th>
-          <td className={styles.price} colSpan={2}>
-            ${shippingFee.toFixed(2)}
-          </td>
-        </tr>
-        <tr>
-          <th className={styles.header}>Tax</th>
-          <td className={styles.price} colSpan={2}>
-            ${tax.toFixed(2)}
-          </td>
-        </tr>
-        <tr>
-          <th className={styles.header}>Total</th>
-          <td className={styles.total} colSpan={2}>
-            ${(subtotal + shippingFee + tax).toFixed(2)}
-          </td>
-        </tr>
+        <tbody>
+          {basket.map((item) => {
+            const product = products.find((p) => p._id === item.id);
+            if (!product) {
+              console.error(`Product with ID "${item.id}" not found.`);
+              return <tr>Product not found</tr>;
+            }
+            return (
+              <tr key={item.id}>
+                <th className={styles.header}>{product.name}</th>
+                <td>x{item.quantity}</td>
+                <td className={styles.price}>
+                  ${(product.price * item.quantity).toFixed(2)}
+                </td>
+              </tr>
+            );
+          })}
+          <tr>
+            <th className={styles.header}>Subtotal</th>
+            <td className={styles.price} colSpan={2}>
+              ${subtotal.toFixed(2)}
+            </td>
+          </tr>
+          <tr>
+            <th className={styles.header}>Shipping</th>
+            <td className={styles.price} colSpan={2}>
+              ${shippingFee.toFixed(2)}
+            </td>
+          </tr>
+          <tr>
+            <th className={styles.header}>Tax</th>
+            <td className={styles.price} colSpan={2}>
+              ${tax.toFixed(2)}
+            </td>
+          </tr>
+          <tr>
+            <th className={styles.header}>Total</th>
+            <td className={styles.total} colSpan={2}>
+              ${(subtotal + shippingFee + tax).toFixed(2)}
+            </td>
+          </tr>
+        </tbody>
       </table>
     </section>
   );

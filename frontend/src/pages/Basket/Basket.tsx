@@ -1,47 +1,16 @@
 import { Link } from "react-router";
 import Header from "../../components/Header/Header";
 import Nav from "../../components/Nav/Nav";
-import type { BasketItem, Product } from "../../types";
 import BasketCard from "../../components/BasketCard/BasketCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCashRegister } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Basket.module.css";
+import { useProducts } from "../../context/ProductProvider";
+import { useBasket } from "../../context/BasketProvider";
 
-interface BasketProps {
-  basket: BasketItem[];
-  products: Product[];
-  handleAddToBasket: (name: string) => void;
-  setBasket: (basket: BasketItem[]) => void;
-}
-
-function Basket({
-  basket,
-  products,
-  handleAddToBasket,
-  setBasket,
-}: BasketProps) {
-  function removeOne(name: string) {
-    const index = basket.findIndex((item) => item.name === name);
-
-    if (index === -1) {
-      // Product is not in basket, skip
-      return;
-    } else if (basket[index].quantity === 1) {
-      // Product only has quantity 1, remove from basket entirely
-      setBasket(basket.filter((item) => item.name !== name));
-    } else {
-      // Product has quantity of 2 or more, decrement quantity
-      setBasket(
-        basket.map((item) =>
-          item.name === name ? { name, quantity: item.quantity - 1 } : item
-        )
-      );
-    }
-  }
-
-  function removeAll(name: string) {
-    setBasket(basket.filter((item) => item.name !== name));
-  }
+function Basket() {
+  const { basket } = useBasket();
+  const { products } = useProducts();
 
   return (
     <>
@@ -55,15 +24,9 @@ function Basket({
           {basket.length > 0 ? (
             <ul className={styles.list}>
               {basket.map((item) => (
-                <li key={item.name}>
+                <li key={item.id}>
                   <BasketCard
-                    product={products.find(
-                      (product) => product.name === item.name
-                    )}
-                    quantity={item.quantity}
-                    addOne={() => handleAddToBasket(item.name)}
-                    removeOne={() => removeOne(item.name)}
-                    removeAll={() => removeAll(item.name)}
+                    product={products.find((p) => p._id === item.id)}
                   />
                 </li>
               ))}
@@ -72,7 +35,7 @@ function Basket({
             <span className="standalone-message">Your basket is empty</span>
           )}
 
-          {/* Basket buttons */}
+          {/* Check out button */}
           {basket.length > 0 && (
             <div className="standalone-button-container">
               <Link to="/checkout" style={{ textDecoration: "none" }}>

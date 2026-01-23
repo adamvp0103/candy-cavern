@@ -61,6 +61,13 @@ body {
   text-align: center;
 }
 
+.standalone-error-message {
+  display: block;
+  margin-top: 1rem;
+  text-align: center;
+  color: #f44848;
+}
+
 .browse-card-list {
   list-style: none;
   display: grid;

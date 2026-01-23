@@ -5,10 +5,9 @@ import styles from "./Search.module.css";
 
 interface SearchProps {
   products: Product[];
-  handleAddToBasket: (name: string) => void;
 }
 
-function Search({ products, handleAddToBasket }: SearchProps) {
+function Search({ products }: SearchProps) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Product[]>([]);
 
@@ -40,7 +39,7 @@ function Search({ products, handleAddToBasket }: SearchProps) {
         />
       </search>
       {query && (
-        <Results results={results} handleAddToBasket={handleAddToBasket} />
+        <Results results={results} />
       )}
     </section>
   );

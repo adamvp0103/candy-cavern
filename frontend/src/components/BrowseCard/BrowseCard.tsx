@@ -4,20 +4,18 @@ import styles from "./BrowseCard.module.css";
 // Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { useBasket } from "../../context/BasketProvider";
 
 interface BrowseCardProps {
   product: Product;
-  handleAddToBasket: (name: string) => void;
 }
 
-function BrowseCard({ product, handleAddToBasket }: BrowseCardProps) {
+function BrowseCard({ product }: BrowseCardProps) {
+  const { increment } = useBasket();
+
   return (
-    <li className={styles.card} key={product.name}>
-      <img
-        className={styles.image}
-        src={`/images/${product.image}`}
-        alt={product.name}
-      />
+    <div className={styles.card} key={product.name}>
+      <img className={styles.image} src={product.image} alt={product.name} />
       <div className={styles.body}>
         <div className={styles.info}>
           <h3>{product.name}</h3>
@@ -27,13 +25,13 @@ function BrowseCard({ product, handleAddToBasket }: BrowseCardProps) {
         <button
           className={styles.button}
           tabIndex={0}
-          onClick={() => handleAddToBasket(product.name)}
+          onClick={() => increment(product._id)}
         >
           <FontAwesomeIcon icon={faPlus} />
           <span className={styles.buttonText}>Add to Basket</span>
         </button>
       </div>
-    </li>
+    </div>
   );
 }
 

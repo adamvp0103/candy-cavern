@@ -1,40 +1,58 @@
-import type { Product } from "../types";
+import { useEffect, useState } from "react";
+import type { Category } from "../types";
 import BrowseCard from "./BrowseCard/BrowseCard";
+import { useProducts } from "../context/ProductProvider";
 
-interface MenuProps {
-  products: Product[];
-  handleAddToBasket: (name: string) => void;
-}
+function Menu() {
+  const [categoriesLoading, setCategoriesLoading] = useState(true);
+  const [categoriesError, setCategoriesError] = useState<any>(null);
+  const [categories, setCategories] = useState<Category[]>([]);
 
-function Menu({ products, handleAddToBasket }: MenuProps) {
-  const categories: string[] = [];
+  const { products, productsLoading, productsError } = useProducts();
 
-  for (const product of products) {
-    if (!categories.includes(product.category)) {
-      categories.push(product.category);
-    }
-  }
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        // TODO: Replace with live URL
+        const response = await fetch("http://localhost:3000/categories");
+        const data = await response.json();
+        setCategories(data);
+      } catch (error) {
+        setCategoriesError(error);
+        console.error(`Error fetching products: ${error}`);
+      } finally {
+        setCategoriesLoading(false);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   return (
     <section className="section">
       <h2 className="heading">Menu</h2>
-      {categories.map((category) => (
-        <section key={category}>
-          <h3 className="subheading">{category}</h3>
-          <ul className="browse-card-list">
-            {products
-              .filter((product) => product.category === category)
-              .map((product) => (
-                <li key={product.name}>
-                  <BrowseCard
-                    product={product}
-                    handleAddToBasket={handleAddToBasket}
-                  />
-                </li>
-              ))}
-          </ul>
-        </section>
-      ))}
+      {productsLoading || categoriesLoading ? (
+        <span className="standalone-message">Loading...</span>
+      ) : productsError || categoriesError ? (
+        <span className="standalone-error-message">
+          Loading failed. Please try again later!
+        </span>
+      ) : (
+        categories.map((category) => (
+          <section key={category._id}>
+            <h3 className="subheading">{category.name}</h3>
+            <ul className="browse-card-list">
+              {products
+                .filter((product) => product.category === category._id)
+                .map((product) => (
+                  <li key={product._id}>
+                    <BrowseCard product={product} />
+                  </li>
+                ))}
+            </ul>
+          </section>
+        ))
+      )}
     </section>
   );
 }

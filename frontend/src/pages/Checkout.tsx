@@ -2,20 +2,15 @@ import Header from "../components/Header/Header";
 import BillingInformation from "../components/BillingInformation";
 import ShippingInformation from "../components/ShippingInformation";
 import Nav from "../components/Nav/Nav";
-import type { BasketItem, Product } from "../types";
 import OrderSummary from "../components/OrderSummary/OrderSummary";
 import { useState } from "react";
 import OrderConfirmation from "../components/OrderConfirmation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { useBasket } from "../context/BasketProvider";
 
-interface CheckoutProps {
-  basket: BasketItem[];
-  setBasket: (basket: BasketItem[]) => void;
-  products: Product[];
-}
-
-function Checkout({ basket, setBasket, products }: CheckoutProps) {
+function Checkout() {
+  const { basket, setBasket } = useBasket();
   const [orderPlaced, setOrderPlaced] = useState(false);
 
   function handleSubmit() {
@@ -31,7 +26,7 @@ function Checkout({ basket, setBasket, products }: CheckoutProps) {
         <h1 className="narrow-page-title">Checkout</h1>
         {basket.length > 0 ? (
           <>
-            <OrderSummary basket={basket} products={products} />
+            <OrderSummary />
             <section className="narrow-section">
               <form className="form" onSubmit={handleSubmit}>
                 <BillingInformation />

@@ -5,12 +5,11 @@ import ResultNav from "./ResultNav/ResultNav";
 
 interface ResultsProps {
   results: Product[];
-  handleAddToBasket: (name: string) => void;
 }
 
-function Results({ results, handleAddToBasket }: ResultsProps) {
+function Results({ results }: ResultsProps) {
   if (results.length === 0) {
-    return <p className="standalone-message">No results</p>;
+    return <p className="standalone-error-message">No results</p>;
   }
 
   const [page, setPage] = useState(0);
@@ -44,10 +43,7 @@ function Results({ results, handleAddToBasket }: ResultsProps) {
         {results
           .slice(page * resultsPerPage, page * resultsPerPage + resultsPerPage)
           .map((result) => (
-            <BrowseCard
-              product={result}
-              handleAddToBasket={handleAddToBasket}
-            />
+            <BrowseCard product={result} />
           ))}
       </ul>
 

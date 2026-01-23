@@ -1,4 +1,5 @@
 export interface Product {
+  _id: string;
   name: string;
   price: number;
   description: string;
@@ -6,7 +7,12 @@ export interface Product {
   category: string;
 }
 
-export interface BasketItem {
+export interface Category {
+  _id: string;
   name: string;
+}
+
+export interface BasketItem {
+  id: string;
   quantity: number;
 }

@@ -1,39 +1,27 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { Product } from "../../types";
 import { faMinus, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import styles from "./BasketCard.module.css";
+import { useBasket } from "../../context/BasketProvider";
+import type { Product } from "../../types";
 
 interface BasketCardProps {
   product: Product | undefined;
-  quantity: number;
-  addOne: (product: Product) => void;
-  removeOne: (productName: string) => void;
-  removeAll: (productName: string) => void;
 }
 
-function BasketCard({
-  product,
-  quantity,
-  addOne,
-  removeOne,
-  removeAll,
-}: BasketCardProps) {
+function BasketCard({ product }: BasketCardProps) {
+  const { basket, increment, decrement, clearProduct, quantityLimit } =
+    useBasket();
+
   if (!product) {
-    console.error(
-      "'product' provided as prop to 'BasketCard' instance was not defined."
-    );
     return <li className={styles.card}>Product not found</li>;
   }
 
-  const quantityLimit = 10;
+  const quantity =
+    basket.find((item) => item.id === product._id)?.quantity ?? 0;
 
   return (
-    <li className={styles.card} key={product.name}>
-      <img
-        className={styles.image}
-        src={`/images/${product.image}`}
-        alt={product.name}
-      />
+    <div className={styles.card} key={product.name}>
+      <img className={styles.image} src={product.image} alt={product.name} />
       <div className={styles.body}>
         <div>
           <h3>{product.name}</h3>
@@ -44,7 +32,7 @@ function BasketCard({
             <button
               className={styles.quantityButton}
               tabIndex={quantity === 1 ? -1 : 0}
-              onClick={() => removeOne(product.name)}
+              onClick={() => decrement(product._id)}
               disabled={quantity === 1}
             >
               <FontAwesomeIcon icon={faMinus} />
@@ -53,7 +41,7 @@ function BasketCard({
             <button
               className={styles.quantityButton}
               tabIndex={quantity === quantityLimit ? -1 : 0}
-              onClick={() => addOne(product)}
+              onClick={() => increment(product._id)}
               disabled={quantity === quantityLimit}
             >
               <FontAwesomeIcon icon={faPlus} />
@@ -62,13 +50,13 @@ function BasketCard({
           <button
             className={styles.removeButton}
             tabIndex={0}
-            onClick={() => removeAll(product.name)}
+            onClick={() => clearProduct(product._id)}
           >
             <FontAwesomeIcon icon={faTrash} />
           </button>
         </div>
       </div>
-    </li>
+    </div>
   );
 }
 
