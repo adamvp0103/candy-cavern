@@ -1,9 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
-import Home from '../pages/Home';
+import Home from '../pages/Home/Home';
 import Basket from '../pages/Basket/Basket';
 import Checkout from '../pages/Checkout';
 import BasketProvider from '../context/BasketProvider';
 import ProductProvider from '../context/ProductProvider';
+import Layout from '../Layout';
 
 function App() {
   return (
@@ -12,9 +13,11 @@ function App() {
         <BasketProvider>
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/basket" element={<Basket />} />
-              <Route path="/checkout" element={<Checkout />} />
+              <Route element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="basket" element={<Basket />} />
+                <Route path="checkout" element={<Checkout />} />
+              </Route>
             </Routes>
           </BrowserRouter>
         </BasketProvider>

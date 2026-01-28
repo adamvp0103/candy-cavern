@@ -1,12 +1,10 @@
-import { Link } from "react-router";
-import Header from "../../components/Header/Header";
-import Nav from "../../components/Nav/Nav";
-import BasketCard from "../../components/BasketCard/BasketCard";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCashRegister } from "@fortawesome/free-solid-svg-icons";
-import styles from "./Basket.module.css";
-import { useProducts } from "../../context/ProductProvider";
-import { useBasket } from "../../context/BasketProvider";
+import { Link } from 'react-router';
+import BasketCard from '../../components/BasketCard/BasketCard';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCashRegister } from '@fortawesome/free-solid-svg-icons';
+import styles from './Basket.module.css';
+import { useProducts } from '../../context/ProductProvider';
+import { useBasket } from '../../context/BasketProvider';
 
 function Basket() {
   const { basket } = useBasket();
@@ -14,8 +12,6 @@ function Basket() {
 
   return (
     <>
-      <Header />
-      <Nav />
       <main className="main">
         <h1 className="page-title">Basket</h1>
 
@@ -23,11 +19,9 @@ function Basket() {
           {/* List of basket items */}
           {basket.length > 0 ? (
             <ul className={styles.list}>
-              {basket.map((item) => (
+              {basket.map(item => (
                 <li key={item.id}>
-                  <BasketCard
-                    product={products.find((p) => p._id === item.id)}
-                  />
+                  <BasketCard product={products.find(p => p._id === item.id)} />
                 </li>
               ))}
             </ul>
@@ -38,7 +32,7 @@ function Basket() {
           {/* Check out button */}
           {basket.length > 0 && (
             <div className="standalone-button-container">
-              <Link to="/checkout" style={{ textDecoration: "none" }}>
+              <Link to="/checkout" style={{ textDecoration: 'none' }}>
                 <button className="standalone-button" tabIndex={0}>
                   <FontAwesomeIcon icon={faCashRegister} />
                   <span className="standalone-button-text">Check Out</span>
