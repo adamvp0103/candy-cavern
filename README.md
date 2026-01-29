@@ -1,6 +1,22 @@
 # Candy Cavern
 
-An online candy store UI with a searchable menu, basket, and checkout flow.
+A fake online candy store to demonstrate my ability to build a robust, modern, full-stack web application with React, TypeScript, Node, Express, and MongoDB.
+
+## Development Features
+
+- Type safety and autocompletion with TypeScript.
+- Data fetching via a REST API with loading and error states.
+- Safe and efficient data architecture with state, props, and context.
+- Optimized navigation with React Router and Outlets.
+- Unit testing with Vitest and React Testing Library.
+
+## Problems & Solutions
+
+- **The Header and Nav components were being rendered on each page individually.** Because each page was expeced to have the same Header and Nav component, I wanted to find a way to make my code more DRY. Upon learning more about React Router, I discovered the power of Outlets, and kept my repeated components in one Layout component with an Outlet as a placeholder for the rest of the page.
+
+- **Many distant components needed access to the same product data.** First, I attempted to pass product data through the component tree as props, but I noticed that this architecture lead to prop drilling. To clean up the code, I stored the product data in context and consumed it only in components that needed it.
+
+- **Image files were larger than neccessary.** I wanted to improve the site's performance by reducing the image file size without an obvious dip in quality. To do this, I used my browser's developer tools to determine the largest a product image ever appears on-screen. I then multiplied this size by 3 (to account for screens with higher pixel densities) and reduced each image's dimensions to that value.
 
 ## Installation
 
