@@ -37,7 +37,12 @@ function Menu() {
     <section className="section">
       <h2 className="heading">Menu</h2>
       {productsLoading || categoriesLoading ? (
-        <span className="standalone-message">Loading...</span>
+        <span className="standalone-message">
+          Loading...
+          <div style={{ opacity: '0.5' }}>
+            (may take a minute due to free-tier backend deployment)
+          </div>
+        </span>
       ) : productsError || categoriesError ? (
         <span className="standalone-error-message">
           Loading failed. Please try again later!
