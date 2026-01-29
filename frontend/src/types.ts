@@ -10,6 +10,7 @@ export interface Product {
 export interface Category {
   _id: string;
   name: string;
+  displayOrder: number;
 }
 
 export interface BasketItem {

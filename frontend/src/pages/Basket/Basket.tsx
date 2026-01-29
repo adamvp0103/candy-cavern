@@ -19,11 +19,17 @@ function Basket() {
           {/* List of basket items */}
           {basket.length > 0 ? (
             <ul className={styles.list}>
-              {basket.map(item => (
-                <li key={item.id}>
-                  <BasketCard product={products.find(p => p._id === item.id)} />
-                </li>
-              ))}
+              {basket.map(item => {
+                const product = products.find(p => p._id === item.id);
+
+                if (!product) return null;
+
+                return (
+                  <li key={item.id}>
+                    <BasketCard product={product} />
+                  </li>
+                );
+              })}
             </ul>
           ) : (
             <span className="standalone-message">Your basket is empty</span>

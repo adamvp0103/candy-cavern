@@ -1,14 +1,13 @@
-import { useState, type ChangeEvent } from "react";
-import type { Product } from "../../types";
-import Results from "../Results";
-import styles from "./Search.module.css";
+import { useState, type ChangeEvent } from 'react';
+import type { Product } from '../../types';
+import Results from '../Results/Results';
+import styles from './Search.module.css';
+import { useProducts } from '../../context/ProductProvider';
 
-interface SearchProps {
-  products: Product[];
-}
+function Search() {
+  const { products } = useProducts();
 
-function Search({ products }: SearchProps) {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
   const [results, setResults] = useState<Product[]>([]);
 
   function handleQueryChange(event: ChangeEvent<HTMLInputElement>) {
@@ -17,12 +16,12 @@ function Search({ products }: SearchProps) {
 
     // Update results (ignore non-letter characters and case)
     setResults(
-      products.filter((product) =>
+      products.filter(product =>
         product.name
-          .replace(/[^a-zA-Z]/g, "")
+          .replace(/[^a-zA-Z]/g, '')
           .toLowerCase()
-          .includes(event.target.value.replace(/[^a-zA-Z]/g, "").toLowerCase())
-      )
+          .includes(event.target.value.replace(/[^a-zA-Z]/g, '').toLowerCase()),
+      ),
     );
   }
 
@@ -35,12 +34,10 @@ function Search({ products }: SearchProps) {
           type="search"
           value={query}
           placeholder="Enter product name..."
-          onChange={(event) => handleQueryChange(event)}
+          onChange={event => handleQueryChange(event)}
         />
       </search>
-      {query && (
-        <Results results={results} />
-      )}
+      {query && <Results results={results} resultsPerPage={6} />}
     </section>
   );
 }

@@ -1,20 +1,19 @@
-import type { Product } from "../types";
-import BrowseCard from "./BrowseCard/BrowseCard";
-import { useState } from "react";
-import ResultNav from "./ResultNav/ResultNav";
+import type { Product } from '../../types';
+import BrowseCard from '../BrowseCard/BrowseCard';
+import { useState } from 'react';
+import ResultNav from '../ResultNav/ResultNav';
 
 interface ResultsProps {
   results: Product[];
+  resultsPerPage: number;
 }
 
-function Results({ results }: ResultsProps) {
+function Results({ results, resultsPerPage }: ResultsProps) {
   if (results.length === 0) {
     return <p className="standalone-error-message">No results</p>;
   }
 
   const [page, setPage] = useState(0);
-
-  const resultsPerPage = 6;
   const numberOfPages = Math.ceil(results.length / resultsPerPage);
 
   if (page >= numberOfPages) {
@@ -26,7 +25,7 @@ function Results({ results }: ResultsProps) {
     <>
       {/* Result count */}
       <span className="standalone-message">
-        {results.length} result{results.length > 1 && "s"}
+        {results.length} result{results.length > 1 && 's'}
       </span>
 
       {/* Result navigation (top) */}
@@ -42,8 +41,10 @@ function Results({ results }: ResultsProps) {
       <ul className="browse-card-list">
         {results
           .slice(page * resultsPerPage, page * resultsPerPage + resultsPerPage)
-          .map((result) => (
-            <BrowseCard product={result} />
+          .map(result => (
+            <li key={result._id}>
+              <BrowseCard product={result} />
+            </li>
           ))}
       </ul>
 

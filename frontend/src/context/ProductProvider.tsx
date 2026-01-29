@@ -4,8 +4,8 @@ import {
   useEffect,
   useState,
   type ReactNode,
-} from "react";
-import type { Product } from "../types";
+} from 'react';
+import type { Product } from '../types';
 
 interface ProductContextType {
   products: Product[];
@@ -34,7 +34,7 @@ function ProductProvider({ children }: ProductProviderProps) {
     const fetchProducts = async () => {
       try {
         // TODO: Replace with live URL
-        const response = await fetch("http://localhost:3000/products");
+        const response = await fetch('http://localhost:3000/products');
         const data = await response.json();
         setProducts(data);
       } catch (error) {

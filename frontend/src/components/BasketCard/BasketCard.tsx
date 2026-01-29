@@ -1,23 +1,18 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMinus, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
-import styles from "./BasketCard.module.css";
-import { useBasket } from "../../context/BasketProvider";
-import type { Product } from "../../types";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinus, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
+import styles from './BasketCard.module.css';
+import { useBasket } from '../../context/BasketProvider';
+import type { Product } from '../../types';
 
 interface BasketCardProps {
-  product: Product | undefined;
+  product: Product;
 }
 
 function BasketCard({ product }: BasketCardProps) {
   const { basket, increment, decrement, clearProduct, quantityLimit } =
     useBasket();
 
-  if (!product) {
-    return <li className={styles.card}>Product not found</li>;
-  }
-
-  const quantity =
-    basket.find((item) => item.id === product._id)?.quantity ?? 0;
+  const quantity = basket.find(item => item.id === product._id)?.quantity ?? 0;
 
   return (
     <div className={styles.card} key={product.name}>

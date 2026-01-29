@@ -1,11 +1,11 @@
-import BillingInformation from '../components/BillingInformation';
-import ShippingInformation from '../components/ShippingInformation';
-import OrderSummary from '../components/OrderSummary/OrderSummary';
+import BillingInformation from '../../components/BillingInformation/BillingInformation';
+import ShippingInformation from '../../components/ShippingInformation/ShippingInformation';
+import OrderSummary from '../../components/OrderSummary/OrderSummary';
 import { useState } from 'react';
-import OrderConfirmation from '../components/OrderConfirmation';
+import OrderConfirmation from '../../components/OrderConfirmation/OrderConfirmation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { useBasket } from '../context/BasketProvider';
+import { useBasket } from '../../context/BasketProvider';
 
 function Checkout() {
   const { basket, setBasket } = useBasket();

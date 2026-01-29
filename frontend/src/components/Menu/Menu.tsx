@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import type { Category } from "../types";
-import BrowseCard from "./BrowseCard/BrowseCard";
-import { useProducts } from "../context/ProductProvider";
+import { useEffect, useState } from 'react';
+import type { Category } from '../../types';
+import BrowseCard from '../BrowseCard/BrowseCard';
+import { useProducts } from '../../context/ProductProvider';
 
 function Menu() {
   const [categoriesLoading, setCategoriesLoading] = useState(true);
@@ -14,9 +14,13 @@ function Menu() {
     const fetchCategories = async () => {
       try {
         // TODO: Replace with live URL
-        const response = await fetch("http://localhost:3000/categories");
+        const response = await fetch('http://localhost:3000/categories');
         const data = await response.json();
-        setCategories(data);
+        setCategories(
+          data.sort(
+            (a: Category, b: Category) => a.displayOrder - b.displayOrder,
+          ),
+        );
       } catch (error) {
         setCategoriesError(error);
         console.error(`Error fetching products: ${error}`);
@@ -38,13 +42,13 @@ function Menu() {
           Loading failed. Please try again later!
         </span>
       ) : (
-        categories.map((category) => (
+        categories.map(category => (
           <section key={category._id}>
             <h3 className="subheading">{category.name}</h3>
             <ul className="browse-card-list">
               {products
-                .filter((product) => product.category === category._id)
-                .map((product) => (
+                .filter(product => product.category === category._id)
+                .map(product => (
                   <li key={product._id}>
                     <BrowseCard product={product} />
                   </li>
