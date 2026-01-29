@@ -33,8 +33,9 @@ function ProductProvider({ children }: ProductProviderProps) {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        // TODO: Replace with live URL
-        const response = await fetch('http://localhost:3000/products');
+        const response = await fetch(
+          'https://candy-cavern.onrender.com/products',
+        );
         const data = await response.json();
         setProducts(data);
       } catch (error) {

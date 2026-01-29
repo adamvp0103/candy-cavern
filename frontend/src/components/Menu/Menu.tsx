@@ -13,8 +13,9 @@ function Menu() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        // TODO: Replace with live URL
-        const response = await fetch('http://localhost:3000/categories');
+        const response = await fetch(
+          'https://candy-cavern.onrender.com/categories',
+        );
         const data = await response.json();
         setCategories(
           data.sort(
